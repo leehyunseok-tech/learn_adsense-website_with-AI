@@ -221,7 +221,7 @@ def main() -> int:
 <body class="printbook" data-root="">
 
 <div class="print-cover">
-  <h1>__TITLE__</h1>
+  <h1>__COVER_TITLE__</h1>
   <p>__SUBTITLE__</p>
   <div class="print-cover__note">
     <p><strong>이 파일은 전권 합본입니다.</strong>
@@ -248,9 +248,17 @@ def main() -> int:
 </html>
 """
 
+    # 표지 큰 제목만 특정 지점(줄바꿈 지정)에서 강제로 줄을 바꿉니다.
+    # book.json 의 "cover_break_after" 로 그 지점을 지정합니다(예: "만들고").
+    끊을위치 = conf.get("cover_break_after")
+    표지제목 = 제목
+    if 끊을위치 and f"{끊을위치} " in 제목:
+        표지제목 = 제목.replace(f"{끊을위치} ", f"{끊을위치}<br>")
+
     def 채우기(글: str) -> str:
         return (
-            글.replace("__TITLE__", 제목)
+            글.replace("__COVER_TITLE__", 표지제목)
+              .replace("__TITLE__", 제목)
               .replace("__SUBTITLE__", 부제 or 제목)
               .replace("__PAGES__", str(쪽수))
         )

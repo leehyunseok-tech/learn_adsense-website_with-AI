@@ -687,7 +687,7 @@ pre code { background: none; border: 0; padding: 0; font-size: inherit; word-bre
   margin-block: var(--space-5);
   padding: var(--space-4) var(--space-5);
   border-radius: var(--radius);
-  border-inline-start: 4px solid var(--box-line, var(--border-strong));
+  border: 1.5px solid var(--fg);
   background: var(--box-bg, var(--bg-subtle));
 }
 .box__title,
@@ -717,9 +717,9 @@ pre code { background: none; border: 0; padding: 0; font-size: inherit; word-bre
 
 .concept   { --box-line: var(--box-concept-line); --box-bg: var(--box-concept-bg); --box-head: var(--box-concept-head); }
 .analogy   { --box-line: var(--box-analogy-line); --box-bg: var(--box-analogy-bg); --box-head: var(--box-analogy-head); border-radius: var(--radius-lg); }
-.pitfall   { --box-line: var(--box-pitfall-line); --box-bg: var(--box-pitfall-bg); --box-head: var(--box-pitfall-head); border-inline-start-width: 5px; }
+.pitfall   { --box-line: var(--box-pitfall-line); --box-bg: var(--box-pitfall-bg); --box-head: var(--box-pitfall-head); }
 .ai-prompt { --box-line: var(--box-ai-line);      --box-bg: var(--box-ai-bg);      --box-head: var(--box-ai-head); }
-.ai-trap   { --box-line: var(--box-trap-line);    --box-bg: var(--box-trap-bg);    --box-head: var(--box-trap-head); border-inline-start-width: 5px; }
+.ai-trap   { --box-line: var(--box-trap-line);    --box-bg: var(--box-trap-bg);    --box-head: var(--box-trap-head); }
 .check     { --box-line: var(--box-check-line);   --box-bg: var(--box-check-bg);   --box-head: var(--box-check-head); border-style: dashed; border-inline-start-style: solid; }
 .callout--tip { --box-line: var(--box-tip-line);  --box-bg: var(--box-tip-bg);     --box-head: var(--box-tip-head); }
 

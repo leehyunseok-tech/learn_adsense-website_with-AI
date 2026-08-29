@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>부록 B · 애드핏과 쿠팡 파트너스 병행하기 — AI로 웹사이트 만들고 애드센스로 돈 벌기</title>
+<meta name="description" content="구글 애드센스를 메인으로 유지하면서 카카오 애드핏과 쿠팡 파트너스를 함께 운영하는 법을 다룹니다.">
+<script>
+  try {
+    var t = localStorage.getItem('book:theme');
+    if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t);
+  } catch (e) {}
+</script>
+<link rel="stylesheet" href="../assets/book.css">
+</head>
+<body class="chapter" data-chapter="apx-b-monetization" data-part="0" data-root="../">
+
+<a class="skip-link" href="#main">본문 바로가기</a>
+
+<header class="book-header">
+  <button class="icon-btn sidebar-toggle" type="button" data-action="toggle-sidebar"
+          aria-expanded="false" aria-label="목차 열기">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+  </button>
+  <a class="book-header__brand" href="../index.html">AI로 웹사이트 만들고 애드센스로 돈 벌기</a>
+  <span class="book-header__crumb">PART 6 · 부록 — 더 깊이 › 부록 B · 애드핏과 쿠팡 파트너스 병행하기</span>
+  <span class="book-header__spacer"></span>
+  <div class="book-header__actions">
+    <button class="icon-btn" type="button" data-action="toggle-done" aria-pressed="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12l5 5L20 6"/></svg>
+      <span class="done-label">읽음 표시</span>
+    </button>
+    <button class="icon-btn" type="button" data-action="open-search" aria-label="검색 (Ctrl+K)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+    </button>
+    <button class="icon-btn" type="button" data-action="toggle-theme" aria-label="테마 전환">
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><path d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"/></svg>
+    </button>
+    <button class="icon-btn" type="button" onclick="window.print()" aria-label="인쇄">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9V3h12v6M6 18H4v-6h16v6h-2M8 14h8v7H8z"/></svg>
+    </button>
+  </div>
+</header>
+
+<div class="reading-progress"><i></i></div>
+
+<div class="book-layout">
+
+  <!-- BUILD:SIDEBAR:START -->
+  <nav class="sidebar" id="sidebar" aria-label="목차">
+      <a class="sidebar__home" href="../index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 10l9-7 9 7v10a1 1 0 01-1 1h-5v-7H9v7H4a1 1 0 01-1-1z"/></svg>표지와 전체 목차</a>
+      <p class="sidebar__title">여는 글</p>
+      <ul class="sidebar__list">
+        <li class="sidebar__item" data-id="prologue">
+          <a href="../front/prologue.html"><span class="sidebar__num">·</span>이 책은 무엇인가</a>
+        </li>
+        <li class="sidebar__item" data-id="howto">
+          <a href="../front/howto.html"><span class="sidebar__num">·</span>이 책 사용 설명서</a>
+        </li>
+      </ul>
+      <p class="sidebar__title">1부 · 시작하기 전에</p>
+      <ul class="sidebar__list">
+        <li class="sidebar__item" data-id="ch01">
+          <a href="../chapters/ch01.html"><span class="sidebar__num">1</span>무엇을 만들지, 어떻게 벌지 정하기</a>
+        </li>
+        <li class="sidebar__item" data-id="ch02">
+          <a href="../chapters/ch02.html"><span class="sidebar__num">2</span>우리가 만들 사이트의 뼈대 이해하기</a>
+        </li>
+      </ul>
+      <p class="sidebar__title">2부 · 개발 환경 준비하기</p>
+      <ul class="sidebar__list">
+        <li class="sidebar__item" data-id="ch03">
+          <a href="../chapters/ch03.html"><span class="sidebar__num">3</span>Claude Code와 Github로 도구 갖추기</a>
+        </li>
+        <li class="sidebar__item" data-id="ch04">
+          <a href="../chapters/ch04.html"><span class="sidebar__num">4</span>Node.js와 Cloudflare로 배포 준비 끝내기</a>
+        </li>
+      </ul>
+      <p class="sidebar__title">3부 · 화면부터 서버리스 기능까지</p>
+      <ul class="sidebar__list">
+        <li class="sidebar__item" data-id="ch05">
+          <a href="../chapters/ch05.html"><span class="sidebar__num">5</span>v0로 화면 설계하고 Claude Code로 옮기기</a>
+        </li>
+        <li class="sidebar__item" data-id="ch06">
+          <a href="../chapters/ch06.html"><span class="sidebar__num">6</span>서버리스로 외부 API 연결하기</a>
+        </li>
+      </ul>
+      <p class="sidebar__title">4부 · 세상에 공개하기</p>
+      <ul class="sidebar__list">
+        <li class="sidebar__item" data-id="ch07">
+          <a href="../chapters/ch07.html"><span class="sidebar__num">7</span>도메인 사서 내 사이트에 연결하기</a>
+        </li>
+        <li class="sidebar__item" data-id="ch08">
+          <a href="../chapters/ch08.html"><span class="sidebar__num">8</span>방문자 분석하고 검색엔진에 등록하기</a>
+        </li>
+      </ul>
+      <p class="sidebar__title">브랜딩과 수익화</p>
+      <ul class="sidebar__list">
+        <li class="sidebar__item" data-id="ch09">
+          <a href="../chapters/ch09.html"><span class="sidebar__num">9</span>파비콘과 링크 미리보기 꾸미기</a>
+        </li>
+        <li class="sidebar__item" data-id="ch10">
+          <a href="../chapters/ch10.html"><span class="sidebar__num">10</span>구글 애드센스 연동하고 심사받기</a>
+        </li>
+        <li class="sidebar__item" data-id="ch11">
+          <a href="../chapters/ch11.html"><span class="sidebar__num">11</span>사이트 품질 높이고 승인률 올리기</a>
+        </li>
+      </ul>
+      <p class="sidebar__title">부록 — 더 깊이</p>
+      <ul class="sidebar__list">
+        <li class="sidebar__item" data-id="apx-a-reference">
+          <a href="apx-a-reference.html"><span class="sidebar__num">A</span>빠른 참조</a>
+        </li>
+        <li class="sidebar__item is-current" data-id="apx-b-monetization">
+          <a href="apx-b-monetization.html"><span class="sidebar__num">B</span>애드핏과 쿠팡 파트너스 병행하기</a>
+          <ul class="sidebar__sub">
+            <li><a href="#sB-1">B.1 애드센스를 메인으로 두어야 하는 이유</a></li>
+            <li><a href="#sB-2">B.2 카카오 애드핏 — 심사가 급할 때의 보조 카드</a></li>
+            <li><a href="#sB-3">B.3 쿠팡 파트너스 — 추천 콘텐츠에 자연스럽게 녹이기</a></li>
+            <li><a href="#sB-4">B.4 세 가지를 함께 운영할 때 체크할 것</a></li>
+          </ul>
+        </li>
+        <li class="sidebar__item" data-id="apx-h-glossary">
+          <a href="apx-h-glossary.html"><span class="sidebar__num">H</span>용어 사전</a>
+        </li>
+      </ul>
+      <p class="sidebar__title">닫는 글</p>
+      <ul class="sidebar__list">
+        <li class="sidebar__item" data-id="epilogue">
+          <a href="../back/epilogue.html"><span class="sidebar__num">·</span>여기서 어디로 갈까</a>
+        </li>
+        <li class="sidebar__item" data-id="changelog">
+          <a href="../back/changelog.html"><span class="sidebar__num">·</span>바뀐 것들</a>
+        </li>
+        <li class="sidebar__item" data-id="colophon">
+          <a href="../back/colophon.html"><span class="sidebar__num">·</span>판권과 출처</a>
+        </li>
+      </ul>
+    </nav>
+  <!-- BUILD:SIDEBAR:END -->
+
+  <main class="chapter-body" id="main">
+
+    <div class="chapter-hero">
+      <p class="chapter-hero__part">PART 6 · 부록 — 더 깊이</p>
+      <span class="chapter-hero__num">✳</span>
+      <h1 class="chapter-hero__title">부록 B · 애드핏과 쿠팡 파트너스 병행하기</h1>
+      <p class="chapter-hero__lead">
+        애드센스 하나만으로 시작해도 충분하지만, 심사가 급하거나 수익 파이프라인을 하나 더 갖고 싶다면
+        다른 채널을 곁들일 수 있습니다. <strong>다만 순서를 지켜야 애드센스 계정을 지키면서 자연스럽게
+        더할 수 있습니다.</strong>
+      </p>
+    </div>
+
+    <div class="chapter-meta">
+      <span>약 10분</span>
+      <span>예제 2개</span>
+      <span>연습문제 3문항</span>
+    </div>
+
+    <div class="chapter-goals">
+      <p class="chapter-goals__title">이 장을 끝내면 할 수 있는 것</p>
+      <ul>
+        <li>애드센스를 메인으로 유지해야 하는 이유를 설명할 수 있다.</li>
+        <li>카카오 애드핏을 언제, 어떻게 보조로 쓸지 판단할 수 있다.</li>
+        <li>쿠팡 파트너스 링크를 콘텐츠에 자연스럽게 녹이고, 필수 고지 문구를 붙일 수 있다.</li>
+      </ul>
+    </div>
+
+    <!-- ============================================================ -->
+    <section class="section" id="sB-1">
+      <h2>B.1 애드센스를 메인으로 두어야 하는 이유</h2>
+
+      <p>
+        10~11장에서 다뤘듯 애드센스는 심사가 까다롭고 시간이 걸립니다. 그래도 이 책은 애드센스를
+        <strong>메인 수익원</strong>으로 두라고 권합니다. 국내에서 가장 폭넓게 알려진 광고 네트워크라
+        광고주 풀이 넓고, 자동 광고 최적화(10.3절) 같은 기능도 잘 갖춰져 있어 장기적으로 안정적이기
+        때문입니다.
+      </p>
+      <p>
+        카카오 애드핏이나 쿠팡 파트너스는 이 메인을 <strong>대체하는 것이 아니라 보완하는
+        것</strong>입니다. 순서를 바꿔서 여러 채널부터 욱여넣으면, 정작 애드센스 심사에서 불리해질
+        수 있습니다.
+      </p>
+
+      <div class="concept">
+        <p class="concept__title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 16v-5M12 8h.01"/></svg>
+          <span class="print-label">[개념] </span>메인 파이프라인과 보조 파이프라인
+        </p>
+        <p>수익원을 하나에만 의존하지 않되, 가장 안정적인 것을 중심(메인)에 두고 나머지를 곁들이는(보조) 구조입니다. 메인이 흔들려도 보조가 최소한의 수익을 받쳐 줍니다.</p>
+      </div>
+
+      <div class="analogy">
+        <p class="analogy__title">
+          <span class="print-label">[비유] </span>💡 이렇게 생각해 보세요
+        </p>
+        <div class="analogy__body">
+          <p>
+            메인 수익원은 본업, 보조 수익원은 부업 같은 거예요. 부업이 재밌다고 본업을 소홀히
+            하면 정작 가장 안정적인 수입이 흔들리잖아요. 애드센스라는 본업을 먼저 자리 잡게 하고,
+            나머지는 곁들이는 정도로 생각하면 편해요.
+          </p>
+        </div>
+      </div>
+
+      <div class="pitfall">
+        <p class="pitfall__title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l9 16H3z"/><path d="M12 10v4M12 17h.01"/></svg>
+          <span class="print-label">[주의] </span>심사도 전에 광고부터 욱여넣는 함정
+        </p>
+        <p>
+          애드센스 승인도 안 났는데 애드핏, 쿠팡 파트너스 배너를 한꺼번에 붙이면, 정작 애드센스
+          심사에서 <strong>"콘텐츠보다 광고·링크가 많다"</strong>는 사유(11.2절)로 반려되기 쉽습니다.
+          먼저 콘텐츠를 채우고, 애드센스 승인 흐름을 방해하지 않는 선에서 하나씩 더하세요.
+        </p>
+      </div>
+
+    </section>
+
+    <!-- ============================================================ -->
+    <section class="section" id="sB-2">
+      <h2>B.2 카카오 애드핏 — 심사가 급할 때의 보조 카드</h2>
+
+      <p>
+        카카오 애드핏(Kakao AdFit)은 카카오가 운영하는 국내 디스플레이 광고 네트워크입니다.
+        <strong>adfit.kakao.com</strong>에서 카카오 계정으로 가입 → 사이트(매체) 등록 → 심사 신청
+        → 승인되면 광고 단위(배너)를 만들고 → 스크립트 태그를 사이트에 삽입하는 순서로, 애드센스와
+        절차가 비슷합니다.
+      </p>
+      <p>
+        국내 이용자들 사이에서는 애드센스보다 심사가 <strong>상대적으로 빠르고 덜 까다롭다</strong>고
+        알려져 있습니다. 그래서 애드센스 심사 결과를 기다리는 동안 먼저 애드핏으로 수익화를
+        시작하거나, 애드센스가 반려됐을 때 사이트를 더 다듬는 동안 임시로 운영하는 용도로 자주
+        쓰입니다. 다만 일반적으로 국내 네트워크의 평균 단가는 애드센스보다 낮다고 알려져 있어,
+        <strong>메인이 아니라 보조·임시 카드</strong>로 취급하는 것을 권합니다.
+      </p>
+
+      <div class="analogy">
+        <p class="analogy__title">
+          <span class="print-label">[비유] </span>🔧 이렇게 생각해 보세요
+        </p>
+        <div class="analogy__body">
+          <p>
+            애드핏은 정식 채용 결과를 기다리는 동안 잠깐 일해 보는 임시직 같은 거예요. 정식
+            자리(애드센스)가 정해지면, 임시직은 그만두거나 부업 정도로 남겨 두면 돼요.
+          </p>
+        </div>
+      </div>
+
+      <figure class="figure" id="fig-b-1">
+        <svg viewBox="0 0 660 220" role="img" aria-labelledby="fbt fbd">
+          <title id="fbt">애드센스 심사 기간 동안 애드핏을 임시로 쓰는 흐름</title>
+          <desc id="fbd">애드센스 심사를 기다리는 동안 애드핏으로 먼저 수익화하고, 애드센스가 승인되면 애드핏은 보조 지면으로 남기는 흐름을 보여준다.</desc>
+          <rect x="20" y="70" width="180" height="70" rx="10"
+                fill="var(--fig-surface)" stroke="var(--fig-line)" stroke-width="1.8"/>
+          <text x="110" y="100" text-anchor="middle" font-size="13" fill="var(--fig-text)" font-weight="700">애드센스</text>
+          <text x="110" y="118" text-anchor="middle" font-size="12" fill="var(--fig-text-soft)">심사 대기 중</text>
+
+          <path d="M200 105h55" stroke="var(--fig-line)" stroke-width="1.8" marker-end="url(#arrowb1)"/>
+
+          <rect x="255" y="70" width="180" height="70" rx="10"
+                fill="var(--fig-surface)" stroke="var(--fig-line)" stroke-width="1.8"/>
+          <text x="345" y="100" text-anchor="middle" font-size="13" fill="var(--fig-text)" font-weight="700">애드핏로</text>
+          <text x="345" y="118" text-anchor="middle" font-size="12" fill="var(--fig-text-soft)">우선 수익화</text>
+
+          <path d="M435 105h55" stroke="var(--fig-line)" stroke-width="1.8" marker-end="url(#arrowb1)"/>
+
+          <rect x="490" y="70" width="150" height="70" rx="10"
+                fill="var(--fig-surface)" stroke="var(--fig-line)" stroke-width="1.8"/>
+          <text x="565" y="94" text-anchor="middle" font-size="13" fill="var(--fig-text)" font-weight="700">승인 후</text>
+          <text x="565" y="112" text-anchor="middle" font-size="12" fill="var(--fig-text-soft)">애드센스 메인,</text>
+          <text x="565" y="128" text-anchor="middle" font-size="12" fill="var(--fig-text-soft)">애드핏은 보조</text>
+
+          <defs>
+            <marker id="arrowb1" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+              <path d="M0 0l8 4-8 4z" fill="var(--fig-line)"/>
+            </marker>
+          </defs>
+        </svg>
+        <figcaption class="figure__caption">
+          <strong>그림 B-1</strong> · 애드핏은 애드센스 승인 전까지의 임시 카드, 승인 후에는 보조 지면으로
+        </figcaption>
+      </figure>
+
+      <div class="ai-prompt">
+        <p class="ai-prompt__title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l2.2 5.8L20 11l-5.8 2.2L12 19l-2.2-5.8L4 11l5.8-2.2z"/></svg>
+          <span class="print-label">[AI에게] </span>AI에게 이렇게 시켜보세요
+        </p>
+        <div class="ai-prompt__text">애드핏에서 발급받은 광고 스크립트를 사이트에 삽입해줘.
+
+[내 환경]
+Next.js 기반 사이트고, 애드센스 코드는 이미 레이아웃 공통 파일에 들어가 있어.
+
+[하고 싶은 것]
+카카오 애드핏에서 발급받은 광고 단위 스크립트를 추가하고 싶어.
+
+[꼭 지켜줘]
+- 애드센스 스크립트나 광고 영역과 겹치지 않는 별도 위치에 배치해줘
+- 어떤 파일의 어느 위치에 넣었는지 알려줘
+
+마지막에 위험한 곳을 짚어줘.</div>
+        <p class="ai-prompt__expect">
+          <strong>이런 답이 오면 정상</strong> — 애드센스 코드가 있는 자리와 겹치지 않는 다른 위치(예: 사이드바나 본문 하단)에 애드핏 스크립트를 넣고, 어느 파일을 고쳤는지 명확히 알려줍니다.
+        </p>
+      </div>
+
+      <div class="ai-trap">
+        <p class="ai-trap__title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M15 9l-6 6M9 9l6 6"/></svg>
+          <span class="print-label">[AI 함정] </span>AI가 여기서 틀립니다
+        </p>
+        <p class="ai-trap__why">
+          "광고 스크립트를 추가해줘"라고만 하면, AI가 <strong>기존 애드센스 광고 영역과 같은
+          자리에 애드핏 코드까지 겹쳐서</strong> 넣는 경우가 있습니다. 화면에서 광고 두 개가
+          겹치거나 레이아웃이 깨지는데도, 코드 자체는 에러 없이 동작하기 때문에 눈으로 훑어서는
+          바로 알아채기 어렵습니다.
+        </p>
+        <div class="ai-trap__grid">
+          <div class="ai-trap__wrong">
+            <span class="ai-trap__label"><span class="print-label">[X] </span>AI가 준 배치</span>
+            <div class="example__code" data-lang="text">
+<pre>&lt;div class="ad-slot"&gt;
+  &lt;AdsenseUnit /&gt;
+  &lt;AdfitUnit /&gt;
+&lt;/div&gt;</pre>
+            </div>
+            <div class="example__output">
+              <span class="example__output-label">문제</span>
+<pre>· 같은 영역에 광고 두 개가 겹쳐 보임
+· 실제 화면에서만 확인되고 코드는 에러 없음</pre>
+            </div>
+          </div>
+          <div class="ai-trap__right">
+            <span class="ai-trap__label"><span class="print-label">[O] </span>고친 배치</span>
+            <div class="example__code" data-lang="text">
+<pre>&lt;div class="ad-slot ad-slot--top"&gt;
+  &lt;AdsenseUnit /&gt;
+&lt;/div&gt;
+&lt;div class="ad-slot ad-slot--bottom"&gt;
+  &lt;AdfitUnit /&gt;
+&lt;/div&gt;</pre>
+            </div>
+          </div>
+        </div>
+        <p class="ai-trap__caught">
+          <strong>이걸 잡아낸 개념</strong> — B.4절의 "광고 지면을 서로 다른 위치로 나눠서 배치한다"는 체크리스트입니다.
+        </p>
+      </div>
+
+    </section>
+
+    <!-- ============================================================ -->
+    <section class="section" id="sB-3">
+      <h2>B.3 쿠팡 파트너스 — 추천 콘텐츠에 자연스럽게 녹이기</h2>
+
+      <p>
+        쿠팡 파트너스는 광고를 노출하고 클릭당 돈을 받는 애드센스·애드핏과는 성격이 다릅니다.
+        내가 만든 추천 링크를 통해 방문자가 쿠팡에서 실제로 <strong>구매</strong>했을 때 일정
+        수수료를 받는 제휴 마케팅(Affiliate Marketing) 방식입니다. 즉 클릭 수보다 "그 링크를
+        누른 사람이 진짜 살 만한 상품인가"가 훨씬 중요합니다.
+      </p>
+      <p>
+        <strong>partners.coupang.com</strong>에서 가입 → 심사(웹사이트만 있으면 비교적 쉽게
+        통과하는 편입니다) → 원하는 상품을 검색해 "링크 생성" → 만들어진 추적 링크를 사이트에
+        붙이는 순서로 시작할 수 있습니다.
+      </p>
+
+      <div class="analogy">
+        <p class="analogy__title">
+          <span class="print-label">[비유] </span>💡 이렇게 생각해 보세요
+        </p>
+        <div class="analogy__body">
+          <p>
+            제휴 마케팅은 옷가게 직원이 손님한테 어울리는 옷을 골라주고, 그 옷이 팔리면 매장에서
+            수수료를 받는 것과 비슷해요. 아무 옷이나 들이밀면 안 팔리지만, 정말 손님한테 어울리는
+            걸 추천하면 손님도 만족하고 나도 수수료를 받는 거예요.
+          </p>
+        </div>
+      </div>
+
+      <p>
+        핵심은 <strong>뜬금없는 배너가 아니라, 지금 보여주는 콘텐츠와 진짜 관련 있는 상품</strong>을
+        추천하는 것입니다. 이 책 예제인 날씨 옷차림 추천 사이트가 좋은 예입니다. 오늘 기온에 맞는
+        옷차림(반팔티, 바람막이, 패딩 등)을 추천하는 화면 바로 옆에, 그 옷차림에 해당하는 실제
+        쿠팡 상품 링크를 붙이면 "광고"가 아니라 "진짜 추천"처럼 읽힙니다. 클릭률과 구매 전환율
+        모두 뜬금없는 배너보다 훨씬 높습니다.
+      </p>
+
+      <div class="pitfall">
+        <p class="pitfall__title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l9 16H3z"/><path d="M12 10v4M12 17h.01"/></svg>
+          <span class="print-label">[주의] </span>고지 문구를 빠뜨리는 함정
+        </p>
+        <p>
+          쿠팡 파트너스 활동으로 수수료를 받는 경우, <strong>"이 포스팅은 쿠팡 파트너스 활동의
+          일환으로, 이에 따른 일정액의 수수료를 제공받습니다"</strong> 같은 고지 문구를 링크
+          근처에 반드시 표시해야 합니다. 공정거래위원회 지침과 쿠팡 파트너스 자체 운영정책이
+          요구하는 사항이라, 선택이 아니라 <strong>필수</strong>입니다. 문구를 빠뜨리면 에러는
+          안 나지만 정책 위반이 됩니다.
+        </p>
+      </div>
+
+      <div class="ai-prompt">
+        <p class="ai-prompt__title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l2.2 5.8L20 11l-5.8 2.2L12 19l-2.2-5.8L4 11l5.8-2.2z"/></svg>
+          <span class="print-label">[AI에게] </span>AI에게 이렇게 시켜보세요
+        </p>
+        <div class="ai-prompt__text">오늘의 옷차림 추천 옆에 쿠팡 파트너스 상품 추천 컴포넌트를 만들어줘.
+
+[내 환경]
+날씨에 맞는 옷차림을 추천해주는 컴포넌트가 이미 있어(반팔티, 바람막이, 패딩 등으로 조합).
+
+[하고 싶은 것]
+추천된 옷차림 종류에 맞는 쿠팡 파트너스 링크 2~3개를 카드 형태로 보여주는 컴포넌트를 만들어줘.
+링크 주소는 내가 나중에 직접 채워 넣을 수 있게 변수로 분리해줘.
+
+[꼭 지켜줘]
+- 링크 목록 바로 아래에 "이 포스팅은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의
+  수수료를 제공받습니다"라는 고지 문구를 눈에 띄게 넣어줘
+- 실제 옷차림 추천과 무관한 상품은 섞지 말아줘
+
+마지막에 위험한 곳을 짚어줘.</div>
+        <p class="ai-prompt__expect">
+          <strong>이런 답이 오면 정상</strong> — 추천 옷차림과 관련된 상품만 카드로 보여주고, 고지 문구가 링크 바로 아래 눈에 띄게 들어갑니다.
+        </p>
+      </div>
+
+    </section>
+
+    <!-- ============================================================ -->
+    <section class="section" id="sB-4">
+      <h2>B.4 세 가지를 함께 운영할 때 체크할 것</h2>
+
+      <p>애드센스·애드핏·쿠팡 파트너스를 함께 운영하기 전에, 아래 항목을 한 번씩 확인하는 것을 권장합니다.</p>
+
+      <ul>
+        <li><strong>애드센스 승인이 우선인가</strong> — 아직 심사 전이거나 진행 중이라면, 다른 채널을 더하기 전에 11장의 콘텐츠·품질 체크리스트부터 다시 확인합니다.</li>
+        <li><strong>광고·링크 지면이 서로 겹치지 않는가</strong> — B.2절의 함정처럼 같은 자리에 여러 채널을 몰아넣지 않았는지 확인합니다.</li>
+        <li><strong>쿠팡 파트너스 고지 문구가 빠짐없이 들어갔는가</strong> — 링크가 있는 모든 페이지에서 확인합니다.</li>
+        <li><strong>애드센스 승인 후 애드핏 비중을 재검토했는가</strong> — 메인이 자리 잡으면 애드핏은 보조 지면으로 줄이거나 유지 여부를 다시 판단합니다.</li>
+        <li><strong>Lighthouse 점수를 다시 확인했는가</strong> — 광고·추적 스크립트가 늘어난 만큼 11.1절에서 다룬 성능 점수가 떨어지지 않았는지 봅니다.</li>
+        <li><strong>각 서비스의 최신 운영정책을 확인했는가</strong> — 이 절의 설명은 큰 흐름을 다룰 뿐, 세부 정책은 각 서비스가 수시로 바꿉니다. 실제 적용 전에는 반드시 애드센스·애드핏·쿠팡 파트너스 공식 페이지의 최신 고지사항을 확인하세요.</li>
+      </ul>
+
+    </section>
+
+    <!-- ============================================================ -->
+    <section class="section chapter-outro">
+
+      <div class="summary">
+        <p class="summary__title">이 장에서 배운 것</p>
+        <ul>
+          <li>애드센스를 메인 수익원으로 두고, 다른 채널은 이를 보완하는 순서로 접근합니다.</li>
+          <li>카카오 애드핏은 애드센스 심사가 급하거나 반려됐을 때 쓰는 보조·임시 카드로 취급합니다.</li>
+          <li>쿠팡 파트너스는 콘텐츠와 진짜 관련 있는 상품을 추천하고, 고지 문구를 반드시 표시합니다.</li>
+        </ul>
+        <p class="summary__oneline">메인은 애드센스, 급할 땐 애드핏, 자연스러운 보조 수익은 쿠팡 파트너스로.</p>
+      </div>
+
+      <div class="quiz">
+        <h3 class="quiz__title">연습문제</h3>
+
+        <div class="quiz__item">
+          <p class="quiz__q">
+            <span>1.</span>
+            <span>이 책이 애드센스를 메인 수익원으로 두라고 권하는 이유는 무엇인가요?</span>
+            <span class="quiz__level quiz__level--easy">쉬움</span>
+          </p>
+          <details class="quiz__answer">
+            <summary>정답 보기</summary>
+            <div class="quiz__answer-body">
+              <p>국내에서 가장 폭넓게 알려진 광고 네트워크라 광고주 풀이 넓고, 자동 광고 최적화 같은 기능도 잘 갖춰져 있어 <strong>장기적으로 가장 안정적</strong>이기 때문입니다.</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="quiz__item">
+          <p class="quiz__q">
+            <span>2.</span>
+            <span>카카오 애드핏을 메인이 아니라 보조·임시 카드로 취급하라고 하는 이유와, 언제 쓰기 좋은지 설명해 보세요.</span>
+            <span class="quiz__level quiz__level--normal">보통</span>
+          </p>
+          <details class="quiz__answer">
+            <summary>정답 보기</summary>
+            <div class="quiz__answer-body">
+              <p>일반적으로 국내 네트워크의 평균 단가가 애드센스보다 낮다고 알려져 있기 때문입니다. <strong>애드센스 심사를 기다리는 동안이나, 반려된 뒤 사이트를 다듬는 동안</strong> 먼저 수익화를 시작하는 용도로 쓰기 좋습니다.</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="quiz__item">
+          <p class="quiz__q">
+            <span>3.</span>
+            <span>이 책 예제인 날씨 옷차림 추천 사이트에 쿠팡 파트너스 링크를 자연스럽게 녹이려면 어떻게 해야 하며, 반드시 지켜야 할 것은 무엇인가요?</span>
+            <span class="quiz__level quiz__level--hard">어려움</span>
+          </p>
+          <details class="quiz__answer">
+            <summary>정답 보기</summary>
+            <div class="quiz__answer-body">
+              <p>오늘의 옷차림 추천(반팔티, 바람막이, 패딩 등) 바로 옆에 그 옷차림에 해당하는 실제 쿠팡 상품 링크를 붙이면 "광고"가 아니라 "진짜 추천"처럼 읽혀 전환율이 높아집니다. <strong>단, "쿠팡 파트너스 활동으로 수수료를 제공받는다"는 고지 문구를 링크 근처에 반드시 표시</strong>해야 합니다.</p>
+            </div>
+          </details>
+        </div>
+
+      </div>
+
+      <div class="next-preview">
+        <p class="next-preview__label">다음 장</p>
+        <p class="next-preview__title">부록 H — 이 책에서 쓴 용어를 가나다순으로 정리한 사전</p>
+        <p>애드핏, 쿠팡 파트너스, 제휴 마케팅 같은 새 용어가 헷갈린다면, 부록 H에서 다시 확인해 보세요.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <aside class="rail" aria-label="이 장의 주요 상자">
+    <p class="rail__title">이 장의 상자</p>
+    <ul class="rail__list">
+      <li><a href="#sB-1"><span class="rail__tag">핵심</span>애드센스를 메인으로</a></li>
+      <li><a href="#sB-2"><span class="rail__tag">핵심</span>애드핏은 보조·임시 카드</a></li>
+      <li><a href="#sB-3"><span class="rail__tag">주의</span>쿠팡 파트너스 고지 문구</a></li>
+    </ul>
+  </aside>
+
+</div>
+
+<!-- BUILD:PAGER:START -->
+  <nav class="pager" aria-label="페이지 이동">
+  <a class="pager__prev" href="apx-a-reference.html">
+    <p class="pager__dir">← 이전</p>
+    <p class="pager__name">부록 A · 빠른 참조</p>
+  </a>
+  <a class="pager__next" href="apx-h-glossary.html">
+    <p class="pager__dir">다음 →</p>
+    <p class="pager__name">부록 H · 용어 사전</p>
+  </a>
+</nav>
+  <!-- BUILD:PAGER:END -->
+
+<footer class="book-footer">
+  <p>AI로 웹사이트 만들고 애드센스로 돈 벌기</p>
+</footer>
+
+<div class="search-overlay" id="search-overlay" role="dialog" aria-modal="true" aria-label="검색">
+  <div class="search-panel">
+    <input type="search" placeholder="검색…" aria-label="검색어">
+    <div class="search-results"></div>
+  </div>
+</div>
+
+<!-- BUILD:SEARCH -->
+<script src="../assets/search-index.js"></script>
+<script src="../assets/book.js"></script>
+</body>
+</html>

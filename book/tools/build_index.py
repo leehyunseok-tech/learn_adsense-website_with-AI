@@ -94,13 +94,6 @@ def 읽기() -> list[dict]:
     return [b for b in 부들 if b["쪽"]]
 
 
-상태표시 = {
-    "done": ('toc-row__state--done', "완성"),
-    "wip":  ('toc-row__state--wip', "쓰는 중"),
-    "todo": ('', "준비 중"),
-}
-
-
 def 부만들기(부: dict) -> str:
     이름 = 부["이름"]
     m = re.match(r"^PART\s+(\S+)\s*·\s*(.+)$", 이름)
@@ -118,7 +111,6 @@ def 부만들기(부: dict) -> str:
     줄 += ['    </div>', '    <ul class="toc-list">']
 
     for 쪽 in 부["쪽"]:
-        클래스, 글 = 상태표시.get(쪽["상태"], ("", 쪽["상태"]))
         있음 = (ROOT / 경로(쪽["id"])).exists()
         줄.append(f'      <li data-id="{쪽["id"]}">')
         if 있음:
@@ -133,7 +125,6 @@ def 부만들기(부: dict) -> str:
         if 쪽["설명"]:
             줄.append(f'          <span class="toc-row__desc">{esc(쪽["설명"])}</span>')
         줄.append('        </span>')
-        줄.append(f'        <span class="toc-row__state {클래스}">{글}</span>')
         줄.append('        </a>' if 있음 else '        </span>')
         줄.append('      </li>')
 
@@ -277,7 +268,7 @@ def 부만들기(부: dict) -> str:
   <div class="home-wrap">
 
 <div class="cover">
-  <h1 class="cover__title">{제목}</h1>
+  <h1 class="cover__title">{표지제목}</h1>
   <p class="cover__thesis">{부제}</p>
   <div class="cover__actions">
     <a class="btn btn--primary" href="{첫쪽}">처음부터 읽기</a>
@@ -353,10 +344,18 @@ def main() -> int:
         "index.html",
     )
     제목 = conf.get("title") or "책"
+    # 표지 큰 제목만 특정 지점(줄바꿈 지정)에서 강제로 줄을 바꿉니다.
+    # book.json 의 "cover_break_after" 로 그 지점을 지정합니다(예: "만들고").
+    # 지정이 없으면 화면 너비에 따라 자동으로 줄바꿈됩니다.
+    끊을위치 = conf.get("cover_break_after")
+    표지제목 = esc(제목)
+    if 끊을위치 and f"{끊을위치} " in 제목:
+        표지제목 = esc(제목).replace(f"{esc(끊을위치)} ", f"{esc(끊을위치)}<br>")
 
     결과.write_text(틀.format(
         lang=conf.get("lang", "ko"),
         제목=esc(제목),
+        표지제목=표지제목,
         짧은제목=esc(제목),
         부제=esc(conf.get("subtitle") or "TODO: book.json 의 subtitle 을 채우십시오."),
         첫쪽=첫쪽,
