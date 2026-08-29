@@ -179,7 +179,7 @@ def 부만들기(부: dict) -> str:
     background: var(--accent); color: var(--fg-on-accent); border-color: var(--accent);
   }}
   .home-wrap {{ min-width: 0; }}
-  .home {{ min-width: 0; padding: 0 0 var(--space-8); max-width: 860px; }}
+  .home {{ min-width: 0; padding: 0 0 var(--space-8); max-width: 860px; margin-inline: auto; }}
   .stats {{
     display: grid; gap: var(--space-3);
     grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));

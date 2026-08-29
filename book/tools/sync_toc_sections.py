@@ -19,7 +19,11 @@ ROOT = Path(__file__).resolve().parent.parent
 TOC = ROOT / "TOC.md"
 
 쪽패턴 = re.compile(r"^### \[([^\]]+)\]")
-절줄패턴 = re.compile(r"^- (?:\d+|[A-H])\.\d+\s")
+# 절 줄은 보통 "- 1.1 제목"처럼 번호가 붙지만, changelog처럼 번호 없는
+# 제목만 있는 쪽도 있습니다(예: "- 판별 변경 내역"). 번호 유무와 무관하게
+# 페이지 헤더 뒤에 오는 "- ..." 줄은 전부 절 줄로 인식해야, 다시 실행할
+# 때마다 안 잡히던 줄이 아래로 계속 중복되는 것을 막을 수 있습니다.
+절줄패턴 = re.compile(r"^- \S")
 절추출 = re.compile(
     # 본문은 s17-3, 부록은 sC-12 처럼 씁니다
     r'<section class="section" id="s[\dA-H-]+">\s*<h2>([^<]+)</h2>'

@@ -584,12 +584,18 @@ pre code { background: none; border: 0; padding: 0; font-size: inherit; word-bre
   background: var(--bg-sunken); color: var(--fg-faint);
 }
 
-/* --- 본문 --- */
+/* --- 본문 ---
+   직계 자식마다 읽기 좋은 폭(--measure)으로 줄을 제한하되,
+   grid 칸 안에서 왼쪽으로 쏠리지 않도록 가운데로 모읍니다.
+   (텍스트 자체는 그대로 왼쪽 정렬입니다 — 블록만 가운데로 옵니다.) */
 .chapter-body {
   min-width: 0;
   padding-block: var(--space-6) var(--space-8);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-.chapter-body > * { max-width: var(--measure); }
+.chapter-body > * { max-width: var(--measure); width: 100%; }
 .chapter-body > .example,
 .chapter-body > .figure,
 .chapter-body > .table-wrap,
