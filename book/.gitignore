@@ -1,0 +1,11 @@
+# 빌드 생성물 (tools/ 가 다시 만듭니다)
+/print.html
+/book.pdf
+
+# 파이썬
+__pycache__/
+*.py[cod]
+
+# OS
+Thumbs.db
+.DS_Store

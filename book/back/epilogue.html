@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>여기서 어디로 갈까 — AI로 웹사이트 만들고 애드센스로 돈 벌기</title>
+<meta name="description" content="이 책을 마치며, 시간이 아니라 시스템이 돈을 번다는 메시지와 다음으로 도전해 볼 것들을 짧게 정리합니다.">
+<script>
+  try {
+    var t = localStorage.getItem('book:theme');
+    if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t);
+  } catch (e) {}
+</script>
+<link rel="stylesheet" href="../assets/book.css">
+</head>
+<body class="chapter" data-chapter="epilogue" data-part="0" data-root="../">
+
+<a class="skip-link" href="#main">본문 바로가기</a>
+
+<header class="book-header">
+  <button class="icon-btn sidebar-toggle" type="button" data-action="toggle-sidebar"
+          aria-expanded="false" aria-label="목차 열기">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+  </button>
+  <a class="book-header__brand" href="../index.html">AI로 웹사이트 만들고 애드센스로 돈 벌기</a>
+  <span class="book-header__crumb">PART 7 · 닫는 글 › 여기서 어디로 갈까</span>
+  <span class="book-header__spacer"></span>
+  <div class="book-header__actions">
+    <button class="icon-btn" type="button" data-action="toggle-done" aria-pressed="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12l5 5L20 6"/></svg>
+      <span class="done-label">읽음 표시</span>
+    </button>
+    <button class="icon-btn" type="button" data-action="open-search" aria-label="검색 (Ctrl+K)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+    </button>
+    <button class="icon-btn" type="button" data-action="toggle-theme" aria-label="테마 전환">
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><path d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"/></svg>
+    </button>
+    <button class="icon-btn" type="button" onclick="window.print()" aria-label="인쇄">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9V3h12v6M6 18H4v-6h16v6h-2M8 14h8v7H8z"/></svg>
+    </button>
+  </div>
+</header>
+
+<div class="reading-progress"><i></i></div>
+
+<div class="book-layout">
+
+  <!-- BUILD:SIDEBAR:START -->
+  <nav class="sidebar" id="sidebar" aria-label="목차">
+      <a class="sidebar__home" href="../index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 10l9-7 9 7v10a1 1 0 01-1 1h-5v-7H9v7H4a1 1 0 01-1-1z"/></svg>표지와 전체 목차</a>
+      <p class="sidebar__title">여는 글</p>
+      <ul class="sidebar__list">
+        <li class="sidebar__item" data-id="prologue">
+          <a href="../front/prologue.html"><span class="sidebar__num">·</span>이 책은 무엇인가</a>
+        </li>
+        <li class="sidebar__item" data-id="howto">
+          <a href="../front/howto.html"><span class="sidebar__num">·</span>이 책 사용 설명서</a>
+        </li>
+      </ul>
+      <p class="sidebar__title">1부 · 시작하기 전에</p>
+      <ul class="sidebar__list">
+        <li class="sidebar__item" data-id="ch01">
+          <a href="../chapters/ch01.html"><span class="sidebar__num">1</span>무엇을 만들지, 어떻게 벌지 정하기</a>
+        </li>
+        <li class="sidebar__item" data-id="ch02">
+          <a href="../chapters/ch02.html"><span class="sidebar__num">2</span>우리가 만들 사이트의 뼈대 이해하기</a>
+        </li>
+      </ul>
+      <p class="sidebar__title">2부 · 개발 환경 준비하기</p>
+      <ul class="sidebar__list">
+        <li class="sidebar__item" data-id="ch03">
+          <a href="../chapters/ch03.html"><span class="sidebar__num">3</span>Claude Code와 Github로 도구 갖추기</a>
+        </li>
+        <li class="sidebar__item" data-id="ch04">
+          <a href="../chapters/ch04.html"><span class="sidebar__num">4</span>Node.js와 Cloudflare로 배포 준비 끝내기</a>
+        </li>
+      </ul>
+      <p class="sidebar__title">3부 · 화면부터 서버리스 기능까지</p>
+      <ul class="sidebar__list">
+        <li class="sidebar__item" data-id="ch05">
+          <a href="../chapters/ch05.html"><span class="sidebar__num">5</span>v0로 화면 설계하고 Claude Code로 옮기기</a>
+        </li>
+        <li class="sidebar__item" data-id="ch06">
+          <a href="../chapters/ch06.html"><span class="sidebar__num">6</span>서버리스로 외부 API 연결하기</a>
+        </li>
+      </ul>
+      <p class="sidebar__title">4부 · 세상에 공개하기</p>
+      <ul class="sidebar__list">
+        <li class="sidebar__item" data-id="ch07">
+          <a href="../chapters/ch07.html"><span class="sidebar__num">7</span>도메인 사서 내 사이트에 연결하기</a>
+        </li>
+        <li class="sidebar__item" data-id="ch08">
+          <a href="../chapters/ch08.html"><span class="sidebar__num">8</span>방문자 분석하고 검색엔진에 등록하기</a>
+        </li>
+      </ul>
+      <p class="sidebar__title">브랜딩과 수익화</p>
+      <ul class="sidebar__list">
+        <li class="sidebar__item" data-id="ch09">
+          <a href="../chapters/ch09.html"><span class="sidebar__num">9</span>파비콘과 링크 미리보기 꾸미기</a>
+        </li>
+        <li class="sidebar__item" data-id="ch10">
+          <a href="../chapters/ch10.html"><span class="sidebar__num">10</span>구글 애드센스 연동하고 심사받기</a>
+        </li>
+        <li class="sidebar__item" data-id="ch11">
+          <a href="../chapters/ch11.html"><span class="sidebar__num">11</span>사이트 품질 높이고 승인률 올리기</a>
+        </li>
+      </ul>
+      <p class="sidebar__title">부록 — 더 깊이</p>
+      <ul class="sidebar__list">
+        <li class="sidebar__item" data-id="apx-a-reference">
+          <a href="../appendix/apx-a-reference.html"><span class="sidebar__num">A</span>빠른 참조</a>
+        </li>
+        <li class="sidebar__item" data-id="apx-h-glossary">
+          <a href="../appendix/apx-h-glossary.html"><span class="sidebar__num">H</span>용어 사전</a>
+        </li>
+      </ul>
+      <p class="sidebar__title">닫는 글</p>
+      <ul class="sidebar__list">
+        <li class="sidebar__item is-current" data-id="epilogue">
+          <a href="epilogue.html"><span class="sidebar__num">·</span>여기서 어디로 갈까</a>
+          <ul class="sidebar__sub">
+            <li><a href="#s99-1">99.1 다음 단계</a></li>
+            <li><a href="#s99-2">99.2 더 읽을 것들</a></li>
+          </ul>
+        </li>
+        <li class="sidebar__item" data-id="changelog">
+          <a href="changelog.html"><span class="sidebar__num">·</span>바뀐 것들</a>
+        </li>
+        <li class="sidebar__item" data-id="colophon">
+          <a href="colophon.html"><span class="sidebar__num">·</span>판권과 출처</a>
+        </li>
+      </ul>
+    </nav>
+  <!-- BUILD:SIDEBAR:END -->
+
+  <main class="chapter-body" id="main">
+
+    <div class="chapter-hero">
+      <p class="chapter-hero__part">PART 7 · 닫는 글</p>
+      <span class="chapter-hero__num">✳</span>
+      <h1 class="chapter-hero__title">여기서 어디로 갈까</h1>
+      <p class="chapter-hero__lead">
+        여기까지 왔다면, 아이디어 하나로 시작해 실제로 배포하고 광고까지 붙인 사이트를 하나 완성한 것입니다.
+        마지막으로 <strong>이 책 전체를 관통한 메시지</strong>를 짧게 되짚고 마칩니다.
+      </p>
+    </div>
+
+    <div class="chapter-meta">
+      <span>약 5분</span>
+      <span>예제 0개</span>
+      <span>연습문제 0문항</span>
+    </div>
+
+    <!-- ============================================================ -->
+    <section class="section" id="s99-1">
+      <h2>99.1 다음 단계</h2>
+
+      <p>저자는 넥슨 FC 온라인 전적 검색 사이트 qwzd.kr을 2023년 10월부터 2025년 10월까지 2년간 운영하며 애드센스로 총 910.67달러, 약 130만 원을 벌었습니다. 큰돈은 아니지만, 이 돈은 매일 붙어 앉아 일해서 번 돈이 아니라 <strong>한 번 만들어 둔 사이트가 꾸준히 벌어다 준 돈</strong>이었습니다.</p>
+
+      <p>이 책에서는 서버를 직접 운영하지 않아도 되는 ②번 서버리스 구조로 사이트를 만들었습니다. 여기서 자신감이 붙었다면, 다음 단계로 직접 서버를 운영하는 ③번 구조나 데이터베이스를 갖춘 ④번 구조에도 도전해 볼 것을 권합니다. 구조가 복잡해질수록 할 수 있는 일도 늘어납니다.</p>
+
+      <p>1장에서 이야기했듯, 트래픽과 SEO는 <strong>복리로 쌓입니다</strong>. 오늘 만든 페이지 하나, 오늘 채운 sitemap.xml 한 줄이 당장은 티가 안 나도, 꾸준히 쌓이면 검색 유입과 방문자가 서서히 불어납니다. 급하게 늘리려 하기보다, 시스템을 계속 다듬으며 기다리는 편이 결국 더 빠릅니다.</p>
+
+    </section>
+
+    <!-- ============================================================ -->
+    <section class="section" id="s99-2">
+      <h2>99.2 더 읽을 것들</h2>
+
+      <p>이 책은 처음부터 끝까지 실습에 필요한 만큼만 다뤘습니다. 더 깊이 알고 싶다면 각 서비스의 공식 문서를 검색해서 찾아보는 것을 권합니다.</p>
+
+      <p>Lighthouse의 세부 항목별 개선 방법은 Lighthouse 공식 문서에서, Cloudflare Pages나 Supabase Edge Function의 자세한 설정은 각각 Cloudflare 공식 문서와 Supabase 공식 문서에서 확인할 수 있습니다. 검색엔진 등록이나 유입 분석과 관련해 막히는 부분이 있다면 구글 서치콘솔 고객센터를 검색해 보는 것도 좋은 방법입니다.</p>
+
+    </section>
+
+    <!-- ============================================================ -->
+    <section class="section chapter-outro">
+
+      <div class="next-preview">
+        <p class="next-preview__label">다음 장</p>
+        <p class="next-preview__title">판권과 출처</p>
+        <p>이 책이 어떤 자료와 경험을 바탕으로 쓰였는지, 마지막 페이지에서 밝혀 둡니다.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <aside class="rail" aria-label="이 장의 주요 상자">
+    <p class="rail__title">이 장의 상자</p>
+    <ul class="rail__list">
+      <li><a href="#s99-1"><span class="rail__tag">핵심</span>다음 단계</a></li>
+      <li><a href="#s99-2"><span class="rail__tag">핵심</span>더 읽을 것들</a></li>
+    </ul>
+  </aside>
+
+</div>
+
+<!-- BUILD:PAGER:START -->
+  <nav class="pager" aria-label="페이지 이동">
+  <a class="pager__prev" href="../appendix/apx-h-glossary.html">
+    <p class="pager__dir">← 이전</p>
+    <p class="pager__name">부록 H · 용어 사전</p>
+  </a>
+  <a class="pager__next" href="changelog.html">
+    <p class="pager__dir">다음 →</p>
+    <p class="pager__name">바뀐 것들</p>
+  </a>
+</nav>
+  <!-- BUILD:PAGER:END -->
+
+<footer class="book-footer">
+  <p>AI로 웹사이트 만들고 애드센스로 돈 벌기</p>
+</footer>
+
+<div class="search-overlay" id="search-overlay" role="dialog" aria-modal="true" aria-label="검색">
+  <div class="search-panel">
+    <input type="search" placeholder="검색…" aria-label="검색어">
+    <div class="search-results"></div>
+  </div>
+</div>
+
+<!-- BUILD:SEARCH -->
+<script src="../assets/search-index.js"></script>
+<script src="../assets/book.js"></script>
+</body>
+</html>

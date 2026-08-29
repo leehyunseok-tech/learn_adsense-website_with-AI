@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>부록 A · 빠른 참조 — AI로 웹사이트 만들고 애드센스로 돈 벌기</title>
+<meta name="description" content="이 책에서 등장한 도구·서비스 링크와 배포 전 마지막 체크리스트를 한 곳에 모았습니다.">
+<script>
+  try {
+    var t = localStorage.getItem('book:theme');
+    if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t);
+  } catch (e) {}
+</script>
+<link rel="stylesheet" href="../assets/book.css">
+</head>
+<body class="chapter" data-chapter="apx-a-reference" data-part="0" data-root="../">
+
+<a class="skip-link" href="#main">본문 바로가기</a>
+
+<header class="book-header">
+  <button class="icon-btn sidebar-toggle" type="button" data-action="toggle-sidebar"
+          aria-expanded="false" aria-label="목차 열기">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+  </button>
+  <a class="book-header__brand" href="../index.html">AI로 웹사이트 만들고 애드센스로 돈 벌기</a>
+  <span class="book-header__crumb">PART 6 · 부록 — 더 깊이 › 부록 A · 빠른 참조</span>
+  <span class="book-header__spacer"></span>
+  <div class="book-header__actions">
+    <button class="icon-btn" type="button" data-action="toggle-done" aria-pressed="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12l5 5L20 6"/></svg>
+      <span class="done-label">읽음 표시</span>
+    </button>
+    <button class="icon-btn" type="button" data-action="open-search" aria-label="검색 (Ctrl+K)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+    </button>
+    <button class="icon-btn" type="button" data-action="toggle-theme" aria-label="테마 전환">
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><path d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"/></svg>
+    </button>
+    <button class="icon-btn" type="button" onclick="window.print()" aria-label="인쇄">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9V3h12v6M6 18H4v-6h16v6h-2M8 14h8v7H8z"/></svg>
+    </button>
+  </div>
+</header>
+
+<div class="reading-progress"><i></i></div>
+
+<div class="book-layout">
+
+  <!-- BUILD:SIDEBAR:START -->
+  <nav class="sidebar" id="sidebar" aria-label="목차">
+      <a class="sidebar__home" href="../index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 10l9-7 9 7v10a1 1 0 01-1 1h-5v-7H9v7H4a1 1 0 01-1-1z"/></svg>표지와 전체 목차</a>
+      <p class="sidebar__title">여는 글</p>
+      <ul class="sidebar__list">
+        <li class="sidebar__item" data-id="prologue">
+          <a href="../front/prologue.html"><span class="sidebar__num">·</span>이 책은 무엇인가</a>
+        </li>
+        <li class="sidebar__item" data-id="howto">
+          <a href="../front/howto.html"><span class="sidebar__num">·</span>이 책 사용 설명서</a>
+        </li>
+      </ul>
+      <p class="sidebar__title">1부 · 시작하기 전에</p>
+      <ul class="sidebar__list">
+        <li class="sidebar__item" data-id="ch01">
+          <a href="../chapters/ch01.html"><span class="sidebar__num">1</span>무엇을 만들지, 어떻게 벌지 정하기</a>
+        </li>
+        <li class="sidebar__item" data-id="ch02">
+          <a href="../chapters/ch02.html"><span class="sidebar__num">2</span>우리가 만들 사이트의 뼈대 이해하기</a>
+        </li>
+      </ul>
+      <p class="sidebar__title">2부 · 개발 환경 준비하기</p>
+      <ul class="sidebar__list">
+        <li class="sidebar__item" data-id="ch03">
+          <a href="../chapters/ch03.html"><span class="sidebar__num">3</span>Claude Code와 Github로 도구 갖추기</a>
+        </li>
+        <li class="sidebar__item" data-id="ch04">
+          <a href="../chapters/ch04.html"><span class="sidebar__num">4</span>Node.js와 Cloudflare로 배포 준비 끝내기</a>
+        </li>
+      </ul>
+      <p class="sidebar__title">3부 · 화면부터 서버리스 기능까지</p>
+      <ul class="sidebar__list">
+        <li class="sidebar__item" data-id="ch05">
+          <a href="../chapters/ch05.html"><span class="sidebar__num">5</span>v0로 화면 설계하고 Claude Code로 옮기기</a>
+        </li>
+        <li class="sidebar__item" data-id="ch06">
+          <a href="../chapters/ch06.html"><span class="sidebar__num">6</span>서버리스로 외부 API 연결하기</a>
+        </li>
+      </ul>
+      <p class="sidebar__title">4부 · 세상에 공개하기</p>
+      <ul class="sidebar__list">
+        <li class="sidebar__item" data-id="ch07">
+          <a href="../chapters/ch07.html"><span class="sidebar__num">7</span>도메인 사서 내 사이트에 연결하기</a>
+        </li>
+        <li class="sidebar__item" data-id="ch08">
+          <a href="../chapters/ch08.html"><span class="sidebar__num">8</span>방문자 분석하고 검색엔진에 등록하기</a>
+        </li>
+      </ul>
+      <p class="sidebar__title">브랜딩과 수익화</p>
+      <ul class="sidebar__list">
+        <li class="sidebar__item" data-id="ch09">
+          <a href="../chapters/ch09.html"><span class="sidebar__num">9</span>파비콘과 링크 미리보기 꾸미기</a>
+        </li>
+        <li class="sidebar__item" data-id="ch10">
+          <a href="../chapters/ch10.html"><span class="sidebar__num">10</span>구글 애드센스 연동하고 심사받기</a>
+        </li>
+        <li class="sidebar__item" data-id="ch11">
+          <a href="../chapters/ch11.html"><span class="sidebar__num">11</span>사이트 품질 높이고 승인률 올리기</a>
+        </li>
+      </ul>
+      <p class="sidebar__title">부록 — 더 깊이</p>
+      <ul class="sidebar__list">
+        <li class="sidebar__item is-current" data-id="apx-a-reference">
+          <a href="apx-a-reference.html"><span class="sidebar__num">A</span>빠른 참조</a>
+          <ul class="sidebar__sub">
+            <li><a href="#sA-1">A.1 이 부록이 필요한 사람</a></li>
+            <li><a href="#sA-2">A.2 단계별 링크 모음</a></li>
+            <li><a href="#sA-3">A.3 배포 전 마지막 체크리스트</a></li>
+          </ul>
+        </li>
+        <li class="sidebar__item" data-id="apx-h-glossary">
+          <a href="apx-h-glossary.html"><span class="sidebar__num">H</span>용어 사전</a>
+        </li>
+      </ul>
+      <p class="sidebar__title">닫는 글</p>
+      <ul class="sidebar__list">
+        <li class="sidebar__item" data-id="epilogue">
+          <a href="../back/epilogue.html"><span class="sidebar__num">·</span>여기서 어디로 갈까</a>
+        </li>
+        <li class="sidebar__item" data-id="changelog">
+          <a href="../back/changelog.html"><span class="sidebar__num">·</span>바뀐 것들</a>
+        </li>
+        <li class="sidebar__item" data-id="colophon">
+          <a href="../back/colophon.html"><span class="sidebar__num">·</span>판권과 출처</a>
+        </li>
+      </ul>
+    </nav>
+  <!-- BUILD:SIDEBAR:END -->
+
+  <main class="chapter-body" id="main">
+
+    <div class="chapter-hero">
+      <p class="chapter-hero__part">PART 6 · 부록 — 더 깊이</p>
+      <span class="chapter-hero__num">✳</span>
+      <h1 class="chapter-hero__title">부록 A · 빠른 참조</h1>
+      <p class="chapter-hero__lead">
+        이 책을 처음부터 끝까지 한 번 읽었다면, 이제부터는 필요한 순간에 펴 보는 참조 페이지가 더 쓸모 있습니다.
+        <strong>등장한 링크와 배포 전 체크리스트</strong>를 한 곳에 모았습니다.
+      </p>
+    </div>
+
+    <div class="chapter-meta">
+      <span>약 5분</span>
+      <span>예제 0개</span>
+      <span>연습문제 0문항</span>
+    </div>
+
+    <!-- ============================================================ -->
+    <section class="section" id="sA-1">
+      <h2>A.1 이 부록이 필요한 사람</h2>
+
+      <p>이 부록은 통독용이 아니라 참조용입니다. 책을 이미 한 번 읽고 두 번째로 실습하면서 "그 링크가 뭐였더라" 하고 다시 찾는 사람, 혹은 특정 단계에서 막혀 앞 장으로 돌아가지 않고 바로 확인하고 싶은 사람을 위한 페이지입니다.</p>
+
+    </section>
+
+    <!-- ============================================================ -->
+    <section class="section" id="sA-2">
+      <h2>A.2 단계별 링크 모음</h2>
+
+      <p>책에 등장한 순서대로 정리했습니다. 이름을 눌러 바로 이동하지 못하는 인쇄본에서는 주소를 직접 입력하면 됩니다.</p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>도구·서비스</th><th>주소</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Claude Code</td><td>https://claude.com/claude-code</td></tr>
+            <tr><td>Cursor (참고, 편집기형 대안)</td><td>https://cursor.com/</td></tr>
+            <tr><td>Github</td><td>https://github.com</td></tr>
+            <tr><td>Github Desktop 설치 안내</td><td>https://docs.github.com/ko/desktop/installing-and-authenticating-to-github-desktop/installing-github-desktop</td></tr>
+            <tr><td>Node.js</td><td>https://nodejs.org/ko/download</td></tr>
+            <tr><td>v0</td><td>https://v0.app/</td></tr>
+            <tr><td>WeatherAPI</td><td>https://www.weatherapi.com/</td></tr>
+            <tr><td>Supabase</td><td>https://supabase.com/</td></tr>
+            <tr><td>Cloudflare</td><td>https://dash.cloudflare.com/</td></tr>
+            <tr><td>가비아</td><td>https://www.gabia.com/</td></tr>
+            <tr><td>구글 애널리틱스</td><td>https://analytics.google.com</td></tr>
+            <tr><td>구글 서치콘솔</td><td>https://search.google.com/search-console</td></tr>
+            <tr><td>네이버 서치어드바이저</td><td>https://searchadvisor.naver.com/console/board</td></tr>
+            <tr><td>다음 웹마스터</td><td>https://webmaster.daum.net/login</td></tr>
+            <tr><td>favicon.io</td><td>https://favicon.io/</td></tr>
+            <tr><td>iloveimg 이미지 리사이즈</td><td>https://www.iloveimg.com/ko/resize-image</td></tr>
+            <tr><td>카카오 디버거</td><td>https://developers.kakao.com/tool/debugger</td></tr>
+            <tr><td>페이스북 디버거</td><td>https://developers.facebook.com/tools/debug/</td></tr>
+            <tr><td>트위터 카드 검증</td><td>https://cards-dev.twitter.com/validator</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+    </section>
+
+    <!-- ============================================================ -->
+    <section class="section" id="sA-3">
+      <h2>A.3 배포 전 마지막 체크리스트</h2>
+
+      <p>실제로 배포하기 전에 아래 항목을 한 번씩 확인하는 것을 권장합니다.</p>
+
+      <ul>
+        <li><strong>API 키가 코드에 하드코딩되지 않고 환경변수에 있는가</strong></li>
+        <li><strong>.env나 Secrets 파일이 Github에 노출되지 않았는가</strong></li>
+        <li><strong>sitemap.xml이 최신인가</strong></li>
+        <li><strong>favicon과 OG 이미지가 기본값이 아닌가</strong></li>
+        <li><strong>ads.txt가 배포됐는가</strong></li>
+        <li><strong>자동 광고가 활성화됐는가</strong></li>
+        <li><strong>Lighthouse 점수를 확인했는가</strong></li>
+        <li><strong>콘텐츠가 데이터만 있지 않고 설명 글이 있는가</strong></li>
+      </ul>
+
+    </section>
+
+    <!-- ============================================================ -->
+    <section class="section chapter-outro">
+
+      <div class="next-preview">
+        <p class="next-preview__label">다음 장</p>
+        <p class="next-preview__title">부록 H — 이 책에서 쓴 용어를 가나다순으로 정리한 사전</p>
+        <p>링크만으로 기억이 안 나는 용어가 있다면, 부록 H에서 가나다순으로 정리한 용어 사전을 함께 확인해 보세요.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <aside class="rail" aria-label="이 장의 주요 상자">
+    <p class="rail__title">이 장의 상자</p>
+    <ul class="rail__list">
+      <li><a href="#sA-2"><span class="rail__tag">핵심</span>단계별 링크 모음</a></li>
+      <li><a href="#sA-3"><span class="rail__tag">핵심</span>배포 전 체크리스트</a></li>
+    </ul>
+  </aside>
+
+</div>
+
+<!-- BUILD:PAGER:START -->
+  <nav class="pager" aria-label="페이지 이동">
+  <a class="pager__prev" href="../chapters/ch11.html">
+    <p class="pager__dir">← 이전</p>
+    <p class="pager__name">11장 · 사이트 품질 높이고 승인률 올리기</p>
+  </a>
+  <a class="pager__next" href="apx-h-glossary.html">
+    <p class="pager__dir">다음 →</p>
+    <p class="pager__name">부록 H · 용어 사전</p>
+  </a>
+</nav>
+  <!-- BUILD:PAGER:END -->
+
+<footer class="book-footer">
+  <p>AI로 웹사이트 만들고 애드센스로 돈 벌기</p>
+</footer>
+
+<div class="search-overlay" id="search-overlay" role="dialog" aria-modal="true" aria-label="검색">
+  <div class="search-panel">
+    <input type="search" placeholder="검색…" aria-label="검색어">
+    <div class="search-results"></div>
+  </div>
+</div>
+
+<!-- BUILD:SEARCH -->
+<script src="../assets/search-index.js"></script>
+<script src="../assets/book.js"></script>
+</body>
+</html>

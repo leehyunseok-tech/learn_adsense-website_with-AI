@@ -1,0 +1,17 @@
+{
+  "title": "AI로 웹사이트 만들고 애드센스로 돈 벌기",
+  "subtitle": "날씨 기반 옷차림 추천 사이트로 배우는 AI 코딩·배포·광고 수익화 실전 가이드",
+  "lang": "ko",
+  "max_width": 88,
+  "minimums": {
+    "chapter-goals": 1,
+    "analogy": 2,
+    "ai-prompt": 1,
+    "ai-trap": 1,
+    "pitfall": 1,
+    "summary": 1,
+    "quiz__item": 3,
+    "next-preview": 1
+  },
+  "deprecated": {}
+}

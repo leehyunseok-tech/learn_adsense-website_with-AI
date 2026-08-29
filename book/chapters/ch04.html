@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Node.js와 Cloudflare로 배포 준비 끝내기 — AI로 웹사이트 만들고 애드센스로 돈 벌기</title>
+<meta name="description" content="Node.js와 npm을 설치해 로컬에서 사이트를 띄워 보고, Cloudflare와 연결해 push할 때마다 자동으로 배포되는 흐름을 만듭니다.">
+<script>
+  try {
+    var t = localStorage.getItem('book:theme');
+    if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t);
+  } catch (e) {}
+</script>
+<link rel="stylesheet" href="../assets/book.css">
+</head>
+<body class="chapter" data-chapter="ch04" data-part="0" data-root="../">
+
+<a class="skip-link" href="#main">본문 바로가기</a>
+
+<header class="book-header">
+  <button class="icon-btn sidebar-toggle" type="button" data-action="toggle-sidebar"
+          aria-expanded="false" aria-label="목차 열기">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+  </button>
+  <a class="book-header__brand" href="../index.html">AI로 웹사이트 만들고 애드센스로 돈 벌기</a>
+  <span class="book-header__crumb">PART 2 · 개발 환경 준비하기 › Node.js와 Cloudflare로 배포 준비 끝내기</span>
+  <span class="book-header__spacer"></span>
+  <div class="book-header__actions">
+    <button class="icon-btn" type="button" data-action="toggle-done" aria-pressed="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12l5 5L20 6"/></svg>
+      <span class="done-label">읽음 표시</span>
+    </button>
+    <button class="icon-btn" type="button" data-action="open-search" aria-label="검색 (Ctrl+K)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+    </button>
+    <button class="icon-btn" type="button" data-action="toggle-theme" aria-label="테마 전환">
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><path d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"/></svg>
+    </button>
+    <button class="icon-btn" type="button" onclick="window.print()" aria-label="인쇄">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9V3h12v6M6 18H4v-6h16v6h-2M8 14h8v7H8z"/></svg>
+    </button>
+  </div>
+</header>
+
+<div class="reading-progress"><i></i></div>
+
+<div class="book-layout">
+
+  <!-- BUILD:SIDEBAR:START -->
+  <nav class="sidebar" id="sidebar" aria-label="목차">
+      <a class="sidebar__home" href="../index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 10l9-7 9 7v10a1 1 0 01-1 1h-5v-7H9v7H4a1 1 0 01-1-1z"/></svg>표지와 전체 목차</a>
+      <p class="sidebar__title">여는 글</p>
+      <ul class="sidebar__list">
+        <li class="sidebar__item" data-id="prologue">
+          <a href="../front/prologue.html"><span class="sidebar__num">·</span>이 책은 무엇인가</a>
+        </li>
+        <li class="sidebar__item" data-id="howto">
+          <a href="../front/howto.html"><span class="sidebar__num">·</span>이 책 사용 설명서</a>
+        </li>
+      </ul>
+      <p class="sidebar__title">1부 · 시작하기 전에</p>
+      <ul class="sidebar__list">
+        <li class="sidebar__item" data-id="ch01">
+          <a href="ch01.html"><span class="sidebar__num">1</span>무엇을 만들지, 어떻게 벌지 정하기</a>
+        </li>
+        <li class="sidebar__item" data-id="ch02">
+          <a href="ch02.html"><span class="sidebar__num">2</span>우리가 만들 사이트의 뼈대 이해하기</a>
+        </li>
+      </ul>
+      <p class="sidebar__title">2부 · 개발 환경 준비하기</p>
+      <ul class="sidebar__list">
+        <li class="sidebar__item" data-id="ch03">
+          <a href="ch03.html"><span class="sidebar__num">3</span>Claude Code와 Github로 도구 갖추기</a>
+        </li>
+        <li class="sidebar__item is-current" data-id="ch04">
+          <a href="ch04.html"><span class="sidebar__num">4</span>Node.js와 Cloudflare로 배포 준비 끝내기</a>
+          <ul class="sidebar__sub">
+            <li><a href="#s4-1">4.1 Node.js와 npm 설치하기</a></li>
+            <li><a href="#s4-2">4.2 로컬에서 사이트 띄워보기 — npm run dev</a></li>
+            <li><a href="#s4-3">4.3 Cloudflare 계정 만들고 자동 배포 연결하기</a></li>
+          </ul>
+        </li>
+      </ul>
+      <p class="sidebar__title">3부 · 화면부터 서버리스 기능까지</p>
+      <ul class="sidebar__list">
+        <li class="sidebar__item" data-id="ch05">
+          <a href="ch05.html"><span class="sidebar__num">5</span>v0로 화면 설계하고 Claude Code로 옮기기</a>
+        </li>
+        <li class="sidebar__item" data-id="ch06">
+          <a href="ch06.html"><span class="sidebar__num">6</span>서버리스로 외부 API 연결하기</a>
+        </li>
+      </ul>
+      <p class="sidebar__title">4부 · 세상에 공개하기</p>
+      <ul class="sidebar__list">
+        <li class="sidebar__item" data-id="ch07">
+          <a href="ch07.html"><span class="sidebar__num">7</span>도메인 사서 내 사이트에 연결하기</a>
+        </li>
+        <li class="sidebar__item" data-id="ch08">
+          <a href="ch08.html"><span class="sidebar__num">8</span>방문자 분석하고 검색엔진에 등록하기</a>
+        </li>
+      </ul>
+      <p class="sidebar__title">브랜딩과 수익화</p>
+      <ul class="sidebar__list">
+        <li class="sidebar__item" data-id="ch09">
+          <a href="ch09.html"><span class="sidebar__num">9</span>파비콘과 링크 미리보기 꾸미기</a>
+        </li>
+        <li class="sidebar__item" data-id="ch10">
+          <a href="ch10.html"><span class="sidebar__num">10</span>구글 애드센스 연동하고 심사받기</a>
+        </li>
+        <li class="sidebar__item" data-id="ch11">
+          <a href="ch11.html"><span class="sidebar__num">11</span>사이트 품질 높이고 승인률 올리기</a>
+        </li>
+      </ul>
+      <p class="sidebar__title">부록 — 더 깊이</p>
+      <ul class="sidebar__list">
+        <li class="sidebar__item" data-id="apx-a-reference">
+          <a href="../appendix/apx-a-reference.html"><span class="sidebar__num">A</span>빠른 참조</a>
+        </li>
+        <li class="sidebar__item" data-id="apx-h-glossary">
+          <a href="../appendix/apx-h-glossary.html"><span class="sidebar__num">H</span>용어 사전</a>
+        </li>
+      </ul>
+      <p class="sidebar__title">닫는 글</p>
+      <ul class="sidebar__list">
+        <li class="sidebar__item" data-id="epilogue">
+          <a href="../back/epilogue.html"><span class="sidebar__num">·</span>여기서 어디로 갈까</a>
+        </li>
+        <li class="sidebar__item" data-id="changelog">
+          <a href="../back/changelog.html"><span class="sidebar__num">·</span>바뀐 것들</a>
+        </li>
+        <li class="sidebar__item" data-id="colophon">
+          <a href="../back/colophon.html"><span class="sidebar__num">·</span>판권과 출처</a>
+        </li>
+      </ul>
+    </nav>
+  <!-- BUILD:SIDEBAR:END -->
+
+  <main class="chapter-body" id="main">
+
+    <div class="chapter-hero">
+      <p class="chapter-hero__part">PART 2 · 개발 환경 준비하기</p>
+      <span class="chapter-hero__num">4</span>
+      <h1 class="chapter-hero__title">Node.js와 Cloudflare로 배포 준비 끝내기</h1>
+      <p class="chapter-hero__lead">
+        이 장에서는 사이트를 실제로 움직이게 하는 두 가지 준비를 마칩니다. Node.js와 npm으로
+        로컬에서 사이트를 띄워 보고, Cloudflare로 인터넷에 자동으로 배포되는 통로를 뚫습니다.
+        <strong>이 장을 마치면 코드를 Github에 push하는 순간 사이트가 실제로 업데이트</strong>됩니다.
+      </p>
+    </div>
+
+    <div class="chapter-meta">
+      <span>약 15분</span>
+      <span>예제 2개</span>
+      <span>연습문제 3문항</span>
+    </div>
+
+    <div class="chapter-goals">
+      <p class="chapter-goals__title">이 장을 끝내면 할 수 있는 것</p>
+      <ul>
+        <li>Node.js와 npm을 설치하고 PowerShell 실행 정책을 허용할 수 있다.</li>
+        <li>npm install과 npm run dev로 로컬에서 사이트를 직접 띄워 볼 수 있다.</li>
+        <li>Cloudflare 계정을 만들어 Github 저장소와 연결하고 자동 배포를 설정할 수 있다.</li>
+      </ul>
+    </div>
+
+    <!-- ============================================================ -->
+    <section class="section" id="s4-1">
+      <h2>4.1 Node.js와 npm 설치하기</h2>
+
+      <p>
+        npm은 Node Package Manager의 줄임말로, 사이트를 만들 때 필요한 재료들을 가져오는
+        프로그램입니다. npm 명령어를 실행하려면 먼저 Node.js를 설치해야 합니다.
+      </p>
+
+      <div class="concept">
+        <p class="concept__title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 16v-5M12 8h.01"/></svg>
+          <span class="print-label">[개념] </span>Node.js와 npm
+        </p>
+        <p>Node.js는 브라우저 밖에서 자바스크립트를 실행하는 프로그램이고, npm은 그 위에서 필요한 코드 재료(패키지)를 내려받아 관리하는 도구입니다.</p>
+      </div>
+
+      <div class="analogy">
+        <p class="analogy__title">
+          <span class="print-label">[비유] </span>💡 이렇게 생각해 보세요
+        </p>
+        <div class="analogy__body">
+          <p>
+            npm은 재료를 배달해주는 택배기사라고 생각하면 편해요. 요리를 하려면 장을 봐야 하듯,
+            사이트를 만들려면 이미 누군가 만들어 둔 코드 재료가 필요해요. npm install이라고
+            한 번 외치면, 필요한 재료들을 전부 문 앞까지 배달해 줘요.
+          </p>
+        </div>
+      </div>
+
+      <p>설치 순서는 다음과 같습니다.</p>
+
+      <ol>
+        <li>https://nodejs.org/ko/download 에서 본인 운영체제에 맞는 설치 파일을 내려받아 설치합니다.</li>
+        <li>윈도우 사용자는 터미널을 열고 아래 명령어로 PowerShell 스크립트 실행 정책을 허용합니다.</li>
+      </ol>
+
+      <div class="example__code" data-lang="powershell">
+<pre>Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser</pre>
+      </div>
+
+      <div class="pitfall">
+        <p class="pitfall__title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l9 16H3z"/><path d="M12 10v4M12 17h.01"/></svg>
+          <span class="print-label">[주의] </span>PowerShell 실행 정책을 그대로 두는 함정
+        </p>
+        <p>
+          윈도우 PowerShell은 기본적으로 외부 스크립트 실행을 막아 두므로, 이 명령어를 실행하지
+          않으면 npm install 같은 명령이 <strong>권한 오류로 조용히 막힙니다</strong>. 한 번만
+          허용해 두면 이후 실습에서는 다시 신경 쓸 필요가 없습니다.
+        </p>
+      </div>
+
+    </section>
+
+    <!-- ============================================================ -->
+    <section class="section" id="s4-2">
+      <h2>4.2 로컬에서 사이트 띄워보기 — npm run dev</h2>
+
+      <p>
+        Node.js 설치를 마쳤다면, 이제 터미널에서 실제로 사이트를 띄워 볼 차례입니다. 터미널을
+        열면 지금 어느 폴더에 있는지부터 확인해야 합니다.
+      </p>
+
+      <div class="analogy">
+        <p class="analogy__title">
+          <span class="print-label">[비유] </span>🔧 이렇게 생각해 보세요
+        </p>
+        <div class="analogy__body">
+          <p>
+            npm run dev는 손님을 받기 전 리허설과 같아요. 진짜 무대(인터넷)에 올리기 전에,
+            내 컴퓨터라는 연습실에서 실제로 화면이 잘 나오는지 미리 확인해 보는 거예요.
+          </p>
+        </div>
+      </div>
+
+      <p>
+        pwd 명령어로 현재 작업 위치 경로를 확인할 수 있습니다. 3장에서 만든 repository 위치에
+        있을 수 있으므로, cd 명령어로 skeleton 폴더로 이동해야 합니다. <strong>cd ske까지 입력하고
+        탭 키를 누르면 자동완성</strong>됩니다.
+      </p>
+
+      <div class="example__code" data-lang="powershell">
+<pre>pwd
+cd ske  # 탭 키를 누르면 폴더 이름이 자동완성됩니다</pre>
+      </div>
+
+      <p>폴더를 옮겼다면, 필요한 재료를 설치하고 개발 서버를 실행합니다.</p>
+
+      <div class="example__code" data-lang="powershell">
+<pre>npm install
+npm run dev</pre>
+      </div>
+
+      <p>
+        https://localhost:3000 에 접속했을 때 화면이 보이면, 개발 서버 구동이 성공적으로 된
+        것입니다.
+      </p>
+
+      <figure class="figure" id="fig-4-1">
+        <svg viewBox="0 0 660 260" role="img" aria-labelledby="f1t f1d">
+          <title id="f1t">터미널 명령어 세 줄이 로컬 화면으로 이어지는 과정</title>
+          <desc id="f1d">터미널에서 cd로 skeleton 폴더로 이동한 뒤 npm install과 npm run dev를 차례로 실행하면, 브라우저의 localhost:3000 주소에서 사이트 화면을 미리 볼 수 있다.</desc>
+          <rect x="20" y="40" width="260" height="170" rx="10"
+                fill="var(--fig-surface)" stroke="var(--fig-line)" stroke-width="1.8"/>
+          <text x="40" y="68" font-size="13" fill="var(--fig-text)" font-weight="700">터미널</text>
+          <text x="40" y="98" font-size="12" fill="var(--fig-text-soft)">cd ske (탭 자동완성)</text>
+          <text x="40" y="122" font-size="12" fill="var(--fig-text-soft)">npm install</text>
+          <text x="40" y="146" font-size="12" fill="var(--fig-text-soft)">npm run dev</text>
+          <text x="40" y="180" font-size="12" fill="var(--fig-accent)">서버 실행 중…</text>
+
+          <path d="M288 125h56" stroke="var(--fig-line)" stroke-width="1.8" marker-end="url(#arrow4)"/>
+
+          <rect x="352" y="40" width="288" height="170" rx="10"
+                fill="var(--fig-surface)" stroke="var(--fig-line)" stroke-width="1.8"/>
+          <text x="372" y="68" font-size="13" fill="var(--fig-text)" font-weight="700">브라우저</text>
+          <text x="372" y="98" font-size="12" fill="var(--fig-text-soft)">https://localhost:3000</text>
+          <rect x="372" y="112" width="248" height="80" rx="6"
+                fill="none" stroke="var(--fig-line)" stroke-width="1.4"/>
+          <text x="496" y="158" text-anchor="middle" font-size="12" fill="var(--fig-text-soft)">사이트 화면 미리보기</text>
+
+          <defs>
+            <marker id="arrow4" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+              <path d="M0 0l8 4-8 4z" fill="var(--fig-line)"/>
+            </marker>
+          </defs>
+        </svg>
+        <figcaption class="figure__caption">
+          <strong>그림 4-1</strong> · cd로 폴더를 옮기고 npm install, npm run dev를 실행하면 localhost:3000에서 화면을 확인할 수 있다
+        </figcaption>
+      </figure>
+
+      <div class="ai-prompt">
+        <p class="ai-prompt__title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l2.2 5.8L20 11l-5.8 2.2L12 19l-2.2-5.8L4 11l5.8-2.2z"/></svg>
+          <span class="print-label">[AI에게] </span>AI에게 이렇게 시켜보세요
+        </p>
+        <div class="ai-prompt__text">이 에러 로그를 보고 원인을 알려줘.
+
+[내 환경]
+터미널에서 npm run dev를 실행했는데 서버가 뜨지 않고 아래 에러가 떴어.
+
+[에러 로그]
+(여기에 터미널에 뜬 에러 메시지를 그대로 붙여넣기)
+
+[하고 싶은 것]
+왜 이 에러가 나는지, 어떤 명령어를 다시 실행해야 하는지 순서대로 알려줘.
+
+[꼭 지켜줘]
+- 폴더 위치나 설치 순서 문제일 가능성부터 먼저 확인해줘
+
+마지막에 위험한 곳을 짚어줘.</div>
+        <p class="ai-prompt__expect">
+          <strong>이런 답이 오면 정상</strong> — <strong>엉뚱한 폴더에서 명령어를 실행했거나
+          npm install을 건너뛰었을 가능성</strong>을 먼저 짚어 주고, pwd로 위치를 확인한 뒤
+          다시 실행해 보라고 안내합니다.
+        </p>
+      </div>
+
+    </section>
+
+    <!-- ============================================================ -->
+    <section class="section" id="s4-3">
+      <h2>4.3 Cloudflare 계정 만들고 자동 배포 연결하기</h2>
+
+      <p>
+        Cloudflare(클라우드플레어)는 내가 만든 사이트를 전 세계 어디서든 빠르고 안전하게
+        보여주는 서비스입니다. 단순히 사이트를 올려주는 공간이 아니라, 한 번만 연결해두면 코드를
+        수정할 때마다 자동으로 사이트가 업데이트되는 자동 배포 시스템을 제공합니다.
+      </p>
+
+      <div class="analogy">
+        <p class="analogy__title">
+          <span class="print-label">[비유] </span>🌍 이렇게 생각해 보세요
+        </p>
+        <div class="analogy__body">
+          <p>
+            Cloudflare는 내가 만든 사이트를 세상에 선보이는 전시장 같아요. 작품(코드)을 완성해서
+            Github에 올려두기만 하면, 전시장이 알아서 매번 새 버전으로 진열을 바꿔 줘요.
+            방문객(사용자)이 어디에 있든 가장 가까운 전시장 지점에서 빠르게 볼 수 있게 해줘요.
+          </p>
+        </div>
+      </div>
+
+      <p>설정 순서는 다음과 같습니다.</p>
+
+      <ol>
+        <li>Cloudflare에 회원가입하거나 로그인합니다.</li>
+        <li>컴퓨팅(Workers) 혹은 컴퓨팅 및 AI에서 "Workers 및 Pages"를 클릭합니다.</li>
+        <li>"응용 프로그램 생성" 버튼을 누르고 "리포지토리 가져오기 시작"을 선택합니다.</li>
+        <li>"새로운 Github 연결"로 3장에서 만든 repository와 연결합니다.</li>
+        <li>프로젝트 이름을 원하는 대로 정합니다.</li>
+        <li>"빌드 및 배포 명령"을 올바르게 입력한 뒤 "생성 및 배포"를 클릭합니다.</li>
+      </ol>
+
+      <p>
+        이후 이 프로젝트는 commit, push할 때마다 자동으로 사이트에 변경사항이 반영됩니다.
+        <strong>3장에서 배운 commit, push 습관이 여기서 그대로 이어집니다</strong>.
+      </p>
+
+      <div class="ai-trap">
+        <p class="ai-trap__title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M15 9l-6 6M9 9l6 6"/></svg>
+          <span class="print-label">[AI 함정] </span>AI가 여기서 틀립니다
+        </p>
+        <p class="ai-trap__why">
+          Cloudflare가 자동으로 채워주는 빌드 명령을 <strong>확인 없이 그대로 두거나 오타를 낸 채</strong>
+          생성 및 배포를 누르면, 배포 로그에는 에러가 남지만 화면에서는 아무 변화도 보이지 않아
+          원인을 찾기 어렵습니다.
+        </p>
+        <div class="ai-trap__grid">
+          <div class="ai-trap__wrong">
+            <span class="ai-trap__label"><span class="print-label">[X] </span>AI가 준 설정</span>
+            <div class="example__code" data-lang="text">
+<pre># 빌드 및 배포 명령 (기본값 그대로 방치)
+빌드 명령: (비어 있음)
+배포 디렉터리: (비어 있음)</pre>
+            </div>
+            <div class="example__output">
+              <span class="example__output-label">문제</span>
+<pre>· 빌드가 아예 실행되지 않거나 실패로 끝남
+· 배포 로그에 에러가 남아도 화면은 예전 그대로임</pre>
+            </div>
+          </div>
+          <div class="ai-trap__right">
+            <span class="ai-trap__label"><span class="print-label">[O] </span>고친 설정</span>
+            <div class="example__code" data-lang="text">
+<pre># 빌드 및 배포 명령
+빌드 명령: npm run build
+배포 디렉터리: dist  (프로젝트 설정에 맞는 출력 폴더)</pre>
+            </div>
+          </div>
+        </div>
+        <p class="ai-trap__caught">
+          <strong>이걸 잡아낸 개념</strong> — 4.2절에서 확인한 npm run build의 역할입니다.
+          Cloudflare의 빌드 명령은 결국 내 컴퓨터에서 실행했던 것과 같은 명령이어야 합니다.
+        </p>
+      </div>
+
+    </section>
+
+    <!-- ============================================================ -->
+    <section class="section chapter-outro">
+
+      <div class="summary">
+        <p class="summary__title">이 장에서 배운 것</p>
+        <ul>
+          <li>Node.js와 npm을 설치하고 PowerShell 실행 정책을 허용했다.</li>
+          <li>npm install과 npm run dev로 로컬에서 사이트를 직접 띄워 봤다.</li>
+          <li>Cloudflare 계정을 만들어 Github 저장소와 연결하고 자동 배포를 설정했다.</li>
+        </ul>
+        <p class="summary__oneline">npm은 재료를 가져오는 도구이고, Cloudflare는 그 결과물을 세상에 보여주는 자동 전시장입니다.</p>
+      </div>
+
+      <div class="quiz">
+        <h3 class="quiz__title">연습문제</h3>
+
+        <div class="quiz__item">
+          <p class="quiz__q">
+            <span>1.</span>
+            <span>PowerShell에서 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser 명령어는 왜 실행해야 하나요?</span>
+            <span class="quiz__level quiz__level--easy">쉬움</span>
+          </p>
+          <details class="quiz__answer">
+            <summary>정답 보기</summary>
+            <div class="quiz__answer-body">
+              <p>
+                윈도우 PowerShell은 기본적으로 외부 스크립트 실행을 막아 두기 때문입니다.
+                <strong>이 명령어로 실행 정책을 허용하지 않으면</strong> npm install 같은 명령이
+                권한 오류로 막힙니다.
+              </p>
+            </div>
+          </details>
+        </div>
+
+        <div class="quiz__item">
+          <p class="quiz__q">
+            <span>2.</span>
+            <span>npm run dev와 npm run build는 각각 언제 사용하는 명령어인가요?</span>
+            <span class="quiz__level quiz__level--normal">보통</span>
+          </p>
+          <details class="quiz__answer">
+            <summary>정답 보기</summary>
+            <div class="quiz__answer-body">
+              <p>
+                npm run dev는 로컬 컴퓨터에서 서버를 실행해 화면이 잘 나오는지 미리 확인할 때
+                씁니다. npm run build는 실제 인터넷에 배포하기 전, <strong>배포 가능한 형태로
+                미리 완성해 볼 때</strong> 씁니다.
+              </p>
+            </div>
+          </details>
+        </div>
+
+        <div class="quiz__item">
+          <p class="quiz__q">
+            <span>3.</span>
+            <span>Cloudflare에서 프로젝트를 연결한 뒤 코드를 수정해도 사이트가 바뀌지 않는다면, 어떤 부분부터 점검해야 하나요? (3장과 4장 내용을 함께 떠올려 보세요)</span>
+            <span class="quiz__level quiz__level--hard">어려움</span>
+          </p>
+          <details class="quiz__answer">
+            <summary>정답 보기</summary>
+            <div class="quiz__answer-body">
+              <p>
+                먼저 3장에서 배운 commit, push를 실제로 했는지 확인합니다. 그다음
+                <strong>4장의 "빌드 및 배포 명령"이 npm run build처럼 올바르게 입력되어
+                있는지</strong>, Cloudflare 배포 로그에 에러가 없는지 확인합니다.
+              </p>
+            </div>
+          </details>
+        </div>
+
+      </div>
+
+      <div class="next-preview">
+        <p class="next-preview__label">다음 장</p>
+        <p class="next-preview__title">5장 — v0로 화면 설계하고 Claude Code로 옮기기</p>
+        <p>
+          이제 사이트를 인터넷에 자동으로 올릴 준비가 끝났습니다. 다음 장에서는 v0라는 AI
+          빌더로 사이트의 첫 화면을 그리고, 그 결과물을 Claude Code로 옮겨와 진짜 프로젝트로
+          만들어 봅니다.
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <aside class="rail" aria-label="이 장의 주요 상자">
+    <p class="rail__title">이 장의 상자</p>
+    <ul class="rail__list">
+      <li><a href="#s4-1"><span class="rail__tag">핵심</span>TODO</a></li>
+    </ul>
+  </aside>
+
+</div>
+
+<!-- BUILD:PAGER:START -->
+  <nav class="pager" aria-label="페이지 이동">
+  <a class="pager__prev" href="ch03.html">
+    <p class="pager__dir">← 이전</p>
+    <p class="pager__name">3장 · Claude Code와 Github로 도구 갖추기</p>
+  </a>
+  <a class="pager__next" href="ch05.html">
+    <p class="pager__dir">다음 →</p>
+    <p class="pager__name">5장 · v0로 화면 설계하고 Claude Code로 옮기기</p>
+  </a>
+</nav>
+  <!-- BUILD:PAGER:END -->
+
+<footer class="book-footer">
+  <p>AI로 웹사이트 만들고 애드센스로 돈 벌기</p>
+</footer>
+
+<div class="search-overlay" id="search-overlay" role="dialog" aria-modal="true" aria-label="검색">
+  <div class="search-panel">
+    <input type="search" placeholder="검색…" aria-label="검색어">
+    <div class="search-results"></div>
+  </div>
+</div>
+
+<!-- BUILD:SEARCH -->
+<script src="../assets/search-index.js"></script>
+<script src="../assets/book.js"></script>
+</body>
+</html>

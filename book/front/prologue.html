@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>이 책은 무엇인가 — AI로 웹사이트 만들고 애드센스로 돈 벌기</title>
+<meta name="description" content="학생 시절 만든 전적 검색 사이트로 2년간 애드센스 910달러를 번 경험을 통해, 이 책이 무엇을 다루고 왜 지금 해볼 만한지 이야기합니다.">
+<script>
+  try {
+    var t = localStorage.getItem('book:theme');
+    if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t);
+  } catch (e) {}
+</script>
+<link rel="stylesheet" href="../assets/book.css">
+</head>
+<body class="chapter" data-chapter="prologue" data-part="0" data-root="../">
+
+<a class="skip-link" href="#main">본문 바로가기</a>
+
+<header class="book-header">
+  <button class="icon-btn sidebar-toggle" type="button" data-action="toggle-sidebar"
+          aria-expanded="false" aria-label="목차 열기">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+  </button>
+  <a class="book-header__brand" href="../index.html">AI로 웹사이트 만들고 애드센스로 돈 벌기</a>
+  <span class="book-header__crumb">PART 0 · 여는 글 › 이 책은 무엇인가</span>
+  <span class="book-header__spacer"></span>
+  <div class="book-header__actions">
+    <button class="icon-btn" type="button" data-action="toggle-done" aria-pressed="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12l5 5L20 6"/></svg>
+      <span class="done-label">읽음 표시</span>
+    </button>
+    <button class="icon-btn" type="button" data-action="open-search" aria-label="검색 (Ctrl+K)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+    </button>
+    <button class="icon-btn" type="button" data-action="toggle-theme" aria-label="테마 전환">
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><path d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"/></svg>
+    </button>
+    <button class="icon-btn" type="button" onclick="window.print()" aria-label="인쇄">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9V3h12v6M6 18H4v-6h16v6h-2M8 14h8v7H8z"/></svg>
+    </button>
+  </div>
+</header>
+
+<div class="reading-progress"><i></i></div>
+
+<div class="book-layout">
+
+  <!-- BUILD:SIDEBAR:START -->
+  <nav class="sidebar" id="sidebar" aria-label="목차">
+      <a class="sidebar__home" href="../index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 10l9-7 9 7v10a1 1 0 01-1 1h-5v-7H9v7H4a1 1 0 01-1-1z"/></svg>표지와 전체 목차</a>
+      <p class="sidebar__title">여는 글</p>
+      <ul class="sidebar__list">
+        <li class="sidebar__item is-current" data-id="prologue">
+          <a href="prologue.html"><span class="sidebar__num">·</span>이 책은 무엇인가</a>
+          <ul class="sidebar__sub">
+            <li><a href="#s0-1">0.1 시간이 아니라 시스템이 돈을 버는 이유</a></li>
+            <li><a href="#s0-2">0.2 실제로 성공한 사례로 보는 자동화 수익</a></li>
+            <li><a href="#s0-3">0.3 이 책의 목표</a></li>
+          </ul>
+        </li>
+        <li class="sidebar__item" data-id="howto">
+          <a href="howto.html"><span class="sidebar__num">·</span>이 책 사용 설명서</a>
+        </li>
+      </ul>
+      <p class="sidebar__title">1부 · 시작하기 전에</p>
+      <ul class="sidebar__list">
+        <li class="sidebar__item" data-id="ch01">
+          <a href="../chapters/ch01.html"><span class="sidebar__num">1</span>무엇을 만들지, 어떻게 벌지 정하기</a>
+        </li>
+        <li class="sidebar__item" data-id="ch02">
+          <a href="../chapters/ch02.html"><span class="sidebar__num">2</span>우리가 만들 사이트의 뼈대 이해하기</a>
+        </li>
+      </ul>
+      <p class="sidebar__title">2부 · 개발 환경 준비하기</p>
+      <ul class="sidebar__list">
+        <li class="sidebar__item" data-id="ch03">
+          <a href="../chapters/ch03.html"><span class="sidebar__num">3</span>Claude Code와 Github로 도구 갖추기</a>
+        </li>
+        <li class="sidebar__item" data-id="ch04">
+          <a href="../chapters/ch04.html"><span class="sidebar__num">4</span>Node.js와 Cloudflare로 배포 준비 끝내기</a>
+        </li>
+      </ul>
+      <p class="sidebar__title">3부 · 화면부터 서버리스 기능까지</p>
+      <ul class="sidebar__list">
+        <li class="sidebar__item" data-id="ch05">
+          <a href="../chapters/ch05.html"><span class="sidebar__num">5</span>v0로 화면 설계하고 Claude Code로 옮기기</a>
+        </li>
+        <li class="sidebar__item" data-id="ch06">
+          <a href="../chapters/ch06.html"><span class="sidebar__num">6</span>서버리스로 외부 API 연결하기</a>
+        </li>
+      </ul>
+      <p class="sidebar__title">4부 · 세상에 공개하기</p>
+      <ul class="sidebar__list">
+        <li class="sidebar__item" data-id="ch07">
+          <a href="../chapters/ch07.html"><span class="sidebar__num">7</span>도메인 사서 내 사이트에 연결하기</a>
+        </li>
+        <li class="sidebar__item" data-id="ch08">
+          <a href="../chapters/ch08.html"><span class="sidebar__num">8</span>방문자 분석하고 검색엔진에 등록하기</a>
+        </li>
+      </ul>
+      <p class="sidebar__title">브랜딩과 수익화</p>
+      <ul class="sidebar__list">
+        <li class="sidebar__item" data-id="ch09">
+          <a href="../chapters/ch09.html"><span class="sidebar__num">9</span>파비콘과 링크 미리보기 꾸미기</a>
+        </li>
+        <li class="sidebar__item" data-id="ch10">
+          <a href="../chapters/ch10.html"><span class="sidebar__num">10</span>구글 애드센스 연동하고 심사받기</a>
+        </li>
+        <li class="sidebar__item" data-id="ch11">
+          <a href="../chapters/ch11.html"><span class="sidebar__num">11</span>사이트 품질 높이고 승인률 올리기</a>
+        </li>
+      </ul>
+      <p class="sidebar__title">부록 — 더 깊이</p>
+      <ul class="sidebar__list">
+        <li class="sidebar__item" data-id="apx-a-reference">
+          <a href="../appendix/apx-a-reference.html"><span class="sidebar__num">A</span>빠른 참조</a>
+        </li>
+        <li class="sidebar__item" data-id="apx-h-glossary">
+          <a href="../appendix/apx-h-glossary.html"><span class="sidebar__num">H</span>용어 사전</a>
+        </li>
+      </ul>
+      <p class="sidebar__title">닫는 글</p>
+      <ul class="sidebar__list">
+        <li class="sidebar__item" data-id="epilogue">
+          <a href="../back/epilogue.html"><span class="sidebar__num">·</span>여기서 어디로 갈까</a>
+        </li>
+        <li class="sidebar__item" data-id="changelog">
+          <a href="../back/changelog.html"><span class="sidebar__num">·</span>바뀐 것들</a>
+        </li>
+        <li class="sidebar__item" data-id="colophon">
+          <a href="../back/colophon.html"><span class="sidebar__num">·</span>판권과 출처</a>
+        </li>
+      </ul>
+    </nav>
+  <!-- BUILD:SIDEBAR:END -->
+
+  <main class="chapter-body" id="main">
+
+    <div class="chapter-hero">
+      <p class="chapter-hero__part">PART 0 · 여는 글</p>
+      <span class="chapter-hero__num">✳</span>
+      <h1 class="chapter-hero__title">이 책은 무엇인가</h1>
+      <p class="chapter-hero__lead">
+        이 책은 코딩을 몰라도 AI와 함께 웹사이트를 만들고 배포해서
+        <strong>실제로 애드센스 수익을 받아 보는 경험</strong>을 하게 해주는 실습서입니다.
+        화려한 성공담 대신 저자가 직접 겪은 과정과 숫자를 그대로 보여드립니다.
+      </p>
+    </div>
+
+    <div class="chapter-meta">
+      <span>약 7분</span>
+      <span>예제 0개</span>
+      <span>연습문제 3문항</span>
+    </div>
+
+    <div class="chapter-goals">
+      <p class="chapter-goals__title">이 장을 끝내면 할 수 있는 것</p>
+      <ul>
+        <li>이 책이 어떤 경험을 실제로 겪게 해주는 책인지 설명할 수 있습니다.</li>
+        <li>저자의 qwzd.kr 사례와 실제 애드센스 수익 숫자를 근거로 이 책의 목표를 말할 수 있습니다.</li>
+      </ul>
+    </div>
+
+    <!-- ============================================================ -->
+    <section class="section" id="s0-1">
+      <h2>0.1 시간이 아니라 시스템이 돈을 버는 이유</h2>
+
+      <p>
+        많은 사람이 부업이라고 하면 시간을 더 갈아 넣는 일을 떠올립니다.
+        하지만 웹사이트는 한 번 만들어 두면 내가 잠든 사이에도 방문자를 받고 광고를 보여줍니다.
+        이 책은 그 구조를 처음부터 끝까지 직접 만들어 보는 책입니다.
+      </p>
+
+      <div class="concept">
+        <p class="concept__title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 16v-5M12 8h.01"/></svg>
+          <span class="print-label">[개념] </span>시스템형 수익
+        </p>
+        <p>내가 매번 시간을 들이지 않아도, 이미 만들어 둔 결과물이 스스로 방문자를 받고 수익을 만들어 내는 구조를 뜻합니다.</p>
+      </div>
+
+      <div class="analogy">
+        <p class="analogy__title">
+          <span class="print-label">[비유] </span>💡 이렇게 생각해 보세요
+        </p>
+        <div class="analogy__body">
+          <p>웹사이트는 동네 어귀에 세워 둔 자판기 같은 거예요.</p>
+          <p>손님이 올 때마다 제가 옆에 서 있을 필요는 없어요. 물건만 채워 놓으면 알아서 팔립니다.</p>
+        </div>
+      </div>
+
+      <div class="pitfall">
+        <p class="pitfall__title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l9 16H3z"/><path d="M12 10v4M12 17h.01"/></svg>
+          <span class="print-label">[주의] </span>불로소득이라는 착각
+        </p>
+        <p>웹사이트를 만든다고 저절로 돈이 쌓이지는 않습니다. <strong>초기 제작과 홍보에는 반드시 시간이 듭니다.</strong> 다만 그 이후 유지 비용이 시간이 아니라 서버 비용 수준으로 줄어든다는 점이 핵심입니다.</p>
+      </div>
+
+    </section>
+
+    <!-- ============================================================ -->
+    <section class="section" id="s0-2">
+      <h2>0.2 실제로 성공한 사례로 보는 자동화 수익</h2>
+
+      <p>
+        저자는 학생 시절 넥슨 FC 온라인(구 피파온라인) 전적 검색 사이트 <strong>qwzd.kr</strong>을 만들었습니다.
+        서버는 AWS를 썼지만 데이터베이스 없이 필요할 때마다 API를 불러오는 구조라 유지보수 부담이 거의 없었습니다.
+        인벤·FM코리아·디시인사이드 같은 커뮤니티에 입소문이 나면서 하루 방문자가 수백에서 수천 명까지 늘었습니다.
+      </p>
+
+      <div class="analogy">
+        <p class="analogy__title">
+          <span class="print-label">[비유] </span>🔧 이렇게 생각해 보세요
+        </p>
+        <div class="analogy__body">
+          <p>DB 없이 그때그때 API만 불러오는 구조는 냉장고 없이 매번 장을 봐 오는 부엌 같아요.</p>
+          <p>재고를 쌓아 두고 관리할 필요가 없으니 상할 걱정도, 청소할 것도 없어요.</p>
+        </div>
+      </div>
+
+      <figure class="figure" id="fig-0-1">
+        <svg viewBox="0 0 660 260" role="img" aria-labelledby="f1t f1d">
+          <title id="f1t">qwzd.kr의 2년간 애드센스 수익 흐름</title>
+          <desc id="f1d">커뮤니티 입소문으로 방문자가 늘고, 2023년 10월부터 2025년 10월까지 2년간 애드센스 누적 수익 910.67달러가 쌓인 과정을 세 단계 상자로 보여준다.</desc>
+          <defs>
+            <marker id="arrow0" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+              <path d="M0 0l8 4-8 4z" fill="var(--fig-line)"/>
+            </marker>
+          </defs>
+          <rect x="20" y="90" width="180" height="80" rx="10" fill="var(--fig-surface)" stroke="var(--fig-line)" stroke-width="1.8"/>
+          <text x="110" y="122" text-anchor="middle" font-size="13" fill="var(--fig-text)" font-weight="700">커뮤니티 입소문</text>
+          <text x="110" y="142" text-anchor="middle" font-size="11" fill="var(--fig-text-soft)">인벤 · FM코리아 · 디시</text>
+
+          <path d="M204 130h50" stroke="var(--fig-line)" stroke-width="1.8" fill="none" marker-end="url(#arrow0)"/>
+
+          <rect x="258" y="90" width="180" height="80" rx="10" fill="var(--fig-surface)" stroke="var(--fig-line)" stroke-width="1.8"/>
+          <text x="348" y="122" text-anchor="middle" font-size="13" fill="var(--fig-text)" font-weight="700">일 방문자 급증</text>
+          <text x="348" y="142" text-anchor="middle" font-size="11" fill="var(--fig-text-soft)">하루 수백 ~ 수천 명</text>
+
+          <path d="M442 130h50" stroke="var(--fig-line)" stroke-width="1.8" fill="none" marker-end="url(#arrow0)"/>
+
+          <rect x="496" y="90" width="150" height="80" rx="10" fill="var(--fig-surface)" stroke="var(--fig-accent)" stroke-width="2.2"/>
+          <text x="571" y="118" text-anchor="middle" font-size="13" fill="var(--fig-text)" font-weight="700">2년 누적</text>
+          <text x="571" y="140" text-anchor="middle" font-size="14" fill="var(--fig-accent)" font-weight="700">$910.67</text>
+          <text x="571" y="157" text-anchor="middle" font-size="11" fill="var(--fig-text-soft)">약 130만 원</text>
+
+          <text x="20" y="220" font-size="12" fill="var(--fig-text-soft)">2023.10 ~ 2025.10 · 애드센스 실제 통계</text>
+        </svg>
+        <figcaption class="figure__caption">
+          <strong>그림 0-1</strong> · 입소문에서 시작해 2년간 910.67달러로 이어진 흐름
+        </figcaption>
+      </figure>
+
+      <div class="ai-prompt">
+        <p class="ai-prompt__title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l2.2 5.8L20 11l-5.8 2.2L12 19l-2.2-5.8L4 11l5.8-2.2z"/></svg>
+          <span class="print-label">[AI에게] </span>AI에게 이렇게 시켜보세요
+        </p>
+        <div class="ai-prompt__text">이 책을 읽기 전에 내 상황을 점검하고 싶어.
+
+[내 환경]
+- 코딩 경험: (예: 없음 / HTML만 조금 / 다른 언어 경험 있음)
+- 하루에 낼 수 있는 시간: (예: 주말에 2~3시간)
+[하고 싶은 것]
+"AI로 웹사이트 만들고 애드센스로 돈 벌기"라는 책을 읽으려는데,
+내 상황에서 현실적으로 기대할 수 있는 결과가 뭔지 알려줘.
+[꼭 지켜줘]
+- 장밋빛 전망 대신 현실적인 범위로 말해줘
+- 내가 부족한 부분이 있으면 미리 짚어줘
+
+마지막에 위험한 곳을 짚어줘.</div>
+        <p class="ai-prompt__expect">
+          <strong>이런 답이 오면 정상</strong> — 큰돈을 바로 벌 수 있다는 답 대신, 완주에 필요한 최소 시간과
+          현실적인 수익 범위(월 몇 달러 수준일 수 있다는 점)를 함께 짚어 주는 답입니다.
+        </p>
+      </div>
+
+      <div class="ai-trap">
+        <p class="ai-trap__title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M15 9l-6 6M9 9l6 6"/></svg>
+          <span class="print-label">[AI 함정] </span>AI가 여기서 틀립니다
+        </p>
+        <p class="ai-trap__why">
+          "애드센스로 얼마 벌 수 있어?"처럼 <strong>막연하게 물으면</strong> AI는 월 수백만 원 같은
+          장밋빛 사례를 예로 들기 쉽습니다. 실제 개인 사이트의 수익 분포는 훨씬 낮은 쪽에 몰려 있습니다.
+        </p>
+        <div class="ai-trap__grid">
+          <div class="ai-trap__wrong">
+            <span class="ai-trap__label"><span class="print-label">[X] </span>AI가 준 코드</span>
+            <div class="example__code" data-lang="text">
+<pre>Q: 애드센스로 얼마 벌 수 있어?
+A: 트래픽만 잘 나오면 월 수백만 원도
+   충분히 가능합니다. 사이트 하나로
+   경제적 자유를 이룬 사례도 많아요.</pre>
+            </div>
+            <div class="example__output">
+              <span class="example__output-label">문제</span>
+<pre>· 근거 없는 극단값을 흔한 결과처럼 제시
+· 실제 개인 사이트 대부분은 훨씬 낮은 수익
+· 기대치가 커지면 초반에 쉽게 포기함</pre>
+            </div>
+          </div>
+          <div class="ai-trap__right">
+            <span class="ai-trap__label"><span class="print-label">[O] </span>고친 코드</span>
+            <div class="example__code" data-lang="text">
+<pre>Q: 개인이 만든 저트래픽 사이트 하나의
+   애드센스 수익 범위를 현실적으로
+   알려줘. 극단적 성공 사례 말고
+   흔한 경우로.
+A: 방문자가 하루 수백~수천 명 수준
+   이면, 2년 누적으로 100만 원 안팎
+   인 경우가 흔합니다. 큰돈보다는
+   "완성해서 운영해 본 경험" 자체가
+   더 큰 가치일 수 있습니다.</pre>
+            </div>
+          </div>
+        </div>
+        <p class="ai-trap__caught">
+          <strong>이걸 잡아낸 개념</strong> — 0.2절의 qwzd.kr 실제 통계(2년 910.67달러)가 이 함정을 잡아냅니다.
+        </p>
+      </div>
+
+    </section>
+
+    <!-- ============================================================ -->
+    <section class="section" id="s0-3">
+      <h2>0.3 이 책의 목표</h2>
+
+      <p>
+        예전에는 프로그래밍을 몰라 포기했던 사람도, 이제는 <strong>무엇을 만들고 싶은지만 명확하면</strong>
+        AI와 함께 서비스를 구현할 수 있는 시대가 되었습니다. Cursor, Claude Code, Codex 같은 에이전트형 도구가
+        개발 과정을 극적으로 단축시켰기 때문입니다. 이 책은 그중에서도 터미널에서 대화하듯 말을 걸면
+        코드 작성부터 배포까지 직접 처리해 주는 <strong>Claude Code</strong>를 기준 도구로 삼아 실습을 진행합니다.
+      </p>
+
+      <p>
+        하지만 개발보다 더 큰 벽은 <strong>배포의 막연함</strong>이었습니다.
+        프론트와 백엔드를 뭘로 만들지, 어디에 올릴지, 데이터는 어디에 저장할지 모르는 막막함이 진입장벽이었습니다.
+        이 책은 서버를 직접 띄우지 않고 데이터베이스 없이도 완성된 웹사이트를 만드는 법을 처음부터 끝까지 보여줍니다.
+      </p>
+
+      <p>
+        이 책의 목표는 독자가 프론트엔드 구축부터 배포, 서버리스 기능, 구글 애드센스 연결까지 전 과정을 따라 하며
+        <strong>"하루 0.01달러라도 벌어보는 경험"</strong>을 하게 하는 것입니다.
+        큰 금액이 아니어도, 내가 만든 것이 실제로 돈을 만드는 순간을 직접 확인하는 것이 이 책의 진짜 목표입니다.
+      </p>
+
+    </section>
+
+    <!-- ============================================================ -->
+    <section class="section chapter-outro">
+
+      <div class="summary">
+        <p class="summary__title">이 장에서 배운 것</p>
+        <ul>
+          <li>웹사이트는 한 번 만들면 시간을 계속 쓰지 않아도 스스로 방문자를 받는 시스템이 될 수 있습니다.</li>
+          <li>저자는 qwzd.kr이라는 실제 사이트로 2년간 애드센스 910.67달러(약 130만 원)를 벌었습니다.</li>
+          <li>AI 도구 덕분에 개발과 배포의 장벽이 크게 낮아져, 이제는 아이디어만 명확하면 따라 할 수 있습니다.</li>
+        </ul>
+        <p class="summary__oneline">이 책은 큰돈보다 "완성하고 돈을 받아 본 경험"을 목표로 합니다.</p>
+      </div>
+
+      <div class="quiz">
+        <h3 class="quiz__title">연습문제</h3>
+
+        <div class="quiz__item">
+          <p class="quiz__q">
+            <span>1.</span>
+            <span>저자가 학생 시절 만들어 애드센스로 수익화한 사이트는 무엇을 검색할 수 있는 사이트였나요?</span>
+            <span class="quiz__level quiz__level--easy">쉬움</span>
+          </p>
+          <details class="quiz__answer">
+            <summary>정답 보기</summary>
+            <div class="quiz__answer-body">
+              <p>넥슨 FC 온라인(구 피파온라인)의 <strong>전적 검색 사이트 qwzd.kr</strong>입니다. DB 없이 API를 그때그때 호출하는 구조라 유지보수 부담이 거의 없었습니다.</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="quiz__item">
+          <p class="quiz__q">
+            <span>2.</span>
+            <span>qwzd.kr이 2023년 10월부터 2025년 10월까지 2년간 벌어들인 애드센스 누적 수익은 얼마인가요?</span>
+            <span class="quiz__level quiz__level--normal">보통</span>
+          </p>
+          <details class="quiz__answer">
+            <summary>정답 보기</summary>
+            <div class="quiz__answer-body">
+              <p><strong>910.67달러(약 130만 원)</strong>입니다. 큰 금액은 아니지만, 실제로 완성해 운영해서 얻은 결과라는 점이 핵심입니다.</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="quiz__item">
+          <p class="quiz__q">
+            <span>3.</span>
+            <span>이 책이 "개발"뿐 아니라 "배포의 막연함"도 함께 다루는 이유는 무엇일까요?</span>
+            <span class="quiz__level quiz__level--hard">어려움</span>
+          </p>
+          <details class="quiz__answer">
+            <summary>정답 보기</summary>
+            <div class="quiz__answer-body">
+              <p>프론트/백엔드를 뭘로 만들지, 어디에 올릴지, 데이터를 어디에 저장할지 모르는 막막함이 <strong>개발 실력과는 별개의 진입장벽</strong>이기 때문입니다. 이 책은 서버와 DB 없이도 완성된 사이트를 만드는 경로를 함께 보여줍니다.</p>
+            </div>
+          </details>
+        </div>
+
+      </div>
+
+      <div class="next-preview">
+        <p class="next-preview__label">다음 장</p>
+        <p class="next-preview__title">이 책 사용 설명서</p>
+        <p>이 책에 나오는 여섯 가지 상자가 각각 무엇을 뜻하는지, 그리고 실습을 시작하기 전에 무엇을 준비해야 하는지 안내합니다.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <aside class="rail" aria-label="이 장의 주요 상자">
+    <p class="rail__title">이 장의 상자</p>
+    <ul class="rail__list">
+      <li><a href="#s0-1"><span class="rail__tag">핵심</span>TODO</a></li>
+    </ul>
+  </aside>
+
+</div>
+
+<!-- BUILD:PAGER:START -->
+  <nav class="pager" aria-label="페이지 이동">
+  <span class="pager__prev pager__empty"></span>
+  <a class="pager__next" href="howto.html">
+    <p class="pager__dir">다음 →</p>
+    <p class="pager__name">이 책 사용 설명서</p>
+  </a>
+</nav>
+  <!-- BUILD:PAGER:END -->
+
+<footer class="book-footer">
+  <p>AI로 웹사이트 만들고 애드센스로 돈 벌기</p>
+</footer>
+
+<div class="search-overlay" id="search-overlay" role="dialog" aria-modal="true" aria-label="검색">
+  <div class="search-panel">
+    <input type="search" placeholder="검색…" aria-label="검색어">
+    <div class="search-results"></div>
+  </div>
+</div>
+
+<!-- BUILD:SEARCH -->
+<script src="../assets/search-index.js"></script>
+<script src="../assets/book.js"></script>
+</body>
+</html>

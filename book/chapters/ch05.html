@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>v0로 화면 설계하고 Claude Code로 옮기기 — AI로 웹사이트 만들고 애드센스로 돈 벌기</title>
+<meta name="description" content="v0에게 프롬프트로 화면 초안을 그리게 하고, 그 결과물을 다운로드해 Claude Code로 프로젝트에 옮겨 심습니다.">
+<script>
+  try {
+    var t = localStorage.getItem('book:theme');
+    if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t);
+  } catch (e) {}
+</script>
+<link rel="stylesheet" href="../assets/book.css">
+</head>
+<body class="chapter" data-chapter="ch05" data-part="0" data-root="../">
+
+<a class="skip-link" href="#main">본문 바로가기</a>
+
+<header class="book-header">
+  <button class="icon-btn sidebar-toggle" type="button" data-action="toggle-sidebar"
+          aria-expanded="false" aria-label="목차 열기">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+  </button>
+  <a class="book-header__brand" href="../index.html">AI로 웹사이트 만들고 애드센스로 돈 벌기</a>
+  <span class="book-header__crumb">PART 3 · 화면부터 서버리스 기능까지 › v0로 화면 설계하고 Claude Code로 옮기기</span>
+  <span class="book-header__spacer"></span>
+  <div class="book-header__actions">
+    <button class="icon-btn" type="button" data-action="toggle-done" aria-pressed="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12l5 5L20 6"/></svg>
+      <span class="done-label">읽음 표시</span>
+    </button>
+    <button class="icon-btn" type="button" data-action="open-search" aria-label="검색 (Ctrl+K)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+    </button>
+    <button class="icon-btn" type="button" data-action="toggle-theme" aria-label="테마 전환">
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><path d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"/></svg>
+    </button>
+    <button class="icon-btn" type="button" onclick="window.print()" aria-label="인쇄">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9V3h12v6M6 18H4v-6h16v6h-2M8 14h8v7H8z"/></svg>
+    </button>
+  </div>
+</header>
+
+<div class="reading-progress"><i></i></div>
+
+<div class="book-layout">
+
+  <!-- BUILD:SIDEBAR:START -->
+  <nav class="sidebar" id="sidebar" aria-label="목차">
+      <a class="sidebar__home" href="../index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 10l9-7 9 7v10a1 1 0 01-1 1h-5v-7H9v7H4a1 1 0 01-1-1z"/></svg>표지와 전체 목차</a>
+      <p class="sidebar__title">여는 글</p>
+      <ul class="sidebar__list">
+        <li class="sidebar__item" data-id="prologue">
+          <a href="../front/prologue.html"><span class="sidebar__num">·</span>이 책은 무엇인가</a>
+        </li>
+        <li class="sidebar__item" data-id="howto">
+          <a href="../front/howto.html"><span class="sidebar__num">·</span>이 책 사용 설명서</a>
+        </li>
+      </ul>
+      <p class="sidebar__title">1부 · 시작하기 전에</p>
+      <ul class="sidebar__list">
+        <li class="sidebar__item" data-id="ch01">
+          <a href="ch01.html"><span class="sidebar__num">1</span>무엇을 만들지, 어떻게 벌지 정하기</a>
+        </li>
+        <li class="sidebar__item" data-id="ch02">
+          <a href="ch02.html"><span class="sidebar__num">2</span>우리가 만들 사이트의 뼈대 이해하기</a>
+        </li>
+      </ul>
+      <p class="sidebar__title">2부 · 개발 환경 준비하기</p>
+      <ul class="sidebar__list">
+        <li class="sidebar__item" data-id="ch03">
+          <a href="ch03.html"><span class="sidebar__num">3</span>Claude Code와 Github로 도구 갖추기</a>
+        </li>
+        <li class="sidebar__item" data-id="ch04">
+          <a href="ch04.html"><span class="sidebar__num">4</span>Node.js와 Cloudflare로 배포 준비 끝내기</a>
+        </li>
+      </ul>
+      <p class="sidebar__title">3부 · 화면부터 서버리스 기능까지</p>
+      <ul class="sidebar__list">
+        <li class="sidebar__item is-current" data-id="ch05">
+          <a href="ch05.html"><span class="sidebar__num">5</span>v0로 화면 설계하고 Claude Code로 옮기기</a>
+          <ul class="sidebar__sub">
+            <li><a href="#s5-1">5.1 v0에게 화면을 프롬프트로 그리게 하기</a></li>
+            <li><a href="#s5-2">5.2 v0 결과물을 다운로드해 프로젝트에 이식하기</a></li>
+          </ul>
+        </li>
+        <li class="sidebar__item" data-id="ch06">
+          <a href="ch06.html"><span class="sidebar__num">6</span>서버리스로 외부 API 연결하기</a>
+        </li>
+      </ul>
+      <p class="sidebar__title">4부 · 세상에 공개하기</p>
+      <ul class="sidebar__list">
+        <li class="sidebar__item" data-id="ch07">
+          <a href="ch07.html"><span class="sidebar__num">7</span>도메인 사서 내 사이트에 연결하기</a>
+        </li>
+        <li class="sidebar__item" data-id="ch08">
+          <a href="ch08.html"><span class="sidebar__num">8</span>방문자 분석하고 검색엔진에 등록하기</a>
+        </li>
+      </ul>
+      <p class="sidebar__title">브랜딩과 수익화</p>
+      <ul class="sidebar__list">
+        <li class="sidebar__item" data-id="ch09">
+          <a href="ch09.html"><span class="sidebar__num">9</span>파비콘과 링크 미리보기 꾸미기</a>
+        </li>
+        <li class="sidebar__item" data-id="ch10">
+          <a href="ch10.html"><span class="sidebar__num">10</span>구글 애드센스 연동하고 심사받기</a>
+        </li>
+        <li class="sidebar__item" data-id="ch11">
+          <a href="ch11.html"><span class="sidebar__num">11</span>사이트 품질 높이고 승인률 올리기</a>
+        </li>
+      </ul>
+      <p class="sidebar__title">부록 — 더 깊이</p>
+      <ul class="sidebar__list">
+        <li class="sidebar__item" data-id="apx-a-reference">
+          <a href="../appendix/apx-a-reference.html"><span class="sidebar__num">A</span>빠른 참조</a>
+        </li>
+        <li class="sidebar__item" data-id="apx-h-glossary">
+          <a href="../appendix/apx-h-glossary.html"><span class="sidebar__num">H</span>용어 사전</a>
+        </li>
+      </ul>
+      <p class="sidebar__title">닫는 글</p>
+      <ul class="sidebar__list">
+        <li class="sidebar__item" data-id="epilogue">
+          <a href="../back/epilogue.html"><span class="sidebar__num">·</span>여기서 어디로 갈까</a>
+        </li>
+        <li class="sidebar__item" data-id="changelog">
+          <a href="../back/changelog.html"><span class="sidebar__num">·</span>바뀐 것들</a>
+        </li>
+        <li class="sidebar__item" data-id="colophon">
+          <a href="../back/colophon.html"><span class="sidebar__num">·</span>판권과 출처</a>
+        </li>
+      </ul>
+    </nav>
+  <!-- BUILD:SIDEBAR:END -->
+
+  <main class="chapter-body" id="main">
+
+    <div class="chapter-hero">
+      <p class="chapter-hero__part">PART 3 · 화면부터 서버리스 기능까지</p>
+      <span class="chapter-hero__num">5</span>
+      <h1 class="chapter-hero__title">v0로 화면 설계하고 Claude Code로 옮기기</h1>
+      <p class="chapter-hero__lead">
+        이 장에서는 사이트의 보이는 부분, 즉 화면 껍데기를 먼저 만듭니다. 터미널에서 Claude
+        Code에게 곧바로 "이런 사이트를 만들어줘"라고 시키기보다, v0라는 AI 빌더로 화면 구조를
+        먼저 잡는 쪽이 훨씬 효율적입니다. <strong>이 장을 마치면 우리 사이트의 첫 화면이 실제
+        프로젝트 안에 들어와 있을</strong> 것입니다.
+      </p>
+    </div>
+
+    <div class="chapter-meta">
+      <span>약 15분</span>
+      <span>예제 2개</span>
+      <span>연습문제 3문항</span>
+    </div>
+
+    <div class="chapter-goals">
+      <p class="chapter-goals__title">이 장을 끝내면 할 수 있는 것</p>
+      <ul>
+        <li>v0에게 프롬프트로 홈페이지 화면 구조를 그리게 할 수 있다.</li>
+        <li>v0 결과물을 다운로드해 기존 프로젝트에 Claude Code로 이식할 수 있다.</li>
+        <li>화면을 다듬을 때 v0와 Claude Code의 역할을 구분해 쓸 수 있다.</li>
+      </ul>
+    </div>
+
+    <!-- ============================================================ -->
+    <section class="section" id="s5-1">
+      <h2>5.1 v0에게 화면을 프롬프트로 그리게 하기</h2>
+
+      <p>
+        사이트의 보이는 부분(껍데기)을 먼저 만듭니다. 저자 경험상 바로 Claude Code에게 "이런
+        사이트 만들어줘"라고 시키는 것보다, AI 빌더로 화면 구조를 먼저 잡는 편이 훨씬
+        효율적입니다.
+      </p>
+
+      <div class="concept">
+        <p class="concept__title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 16v-5M12 8h.01"/></svg>
+          <span class="print-label">[개념] </span>v0
+        </p>
+        <p>v0는 프롬프트만으로 Next.js와 Tailwind 기반의 실제 배포 가능한 프로덕션 코드를 생성해 주는 AI 화면 빌더입니다.</p>
+      </div>
+
+      <p>
+        lovable, bolt 같은 유사 서비스도 있지만, 저자는 v0의 생성 품질이 더 높다고 판단해
+        애용합니다. https://v0.app/ 에서 바로 사용할 수 있으며, 무료 한도 안에서도 초기
+        디자인과 구조를 잡는 정도는 충분합니다.
+      </p>
+
+      <div class="analogy">
+        <p class="analogy__title">
+          <span class="print-label">[비유] </span>💡 이렇게 생각해 보세요
+        </p>
+        <div class="analogy__body">
+          <p>
+            설계도 없이 집을 짓지 않는 것처럼, 화면도 초안 없이 바로 코드를 짜기 시작하면
+            나중에 뜯어고칠 곳이 많아져요. v0에게 먼저 화면 초안을 맡기는 건, 목수를 부르기
+            전에 건축가에게 설계도부터 받아 두는 것과 같아요.
+          </p>
+        </div>
+      </div>
+
+      <div class="pitfall">
+        <p class="pitfall__title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l9 16H3z"/><path d="M12 10v4M12 17h.01"/></svg>
+          <span class="print-label">[주의] </span>v0에서 충분히 다듬지 않고 넘기는 함정
+        </p>
+        <p>
+          v0의 첫 결과물은 완성본이 아니라 출발점입니다. 여기서 대충 만족하고 바로 Claude
+          Code로 넘기면, <strong>Claude Code에서 다시 프롬프팅해야 할 일이 훨씬
+          많아집니다</strong>. 저자도 완성도가 떨어졌던 졸라맨 캐릭터를 v0 안에서 반복해서
+          다듬은 뒤에야 넘겼습니다.
+        </p>
+      </div>
+
+    </section>
+
+    <!-- ============================================================ -->
+    <section class="section" id="s5-2">
+      <h2>5.2 v0 결과물을 다운로드해 프로젝트에 이식하기</h2>
+
+      <p>
+        이번 예제 사이트인 "날씨 기반 옷차림 추천 사이트"의 홈페이지를 v0에게 그리게 해
+        보겠습니다. 저자가 실제로 입력했던 프롬프트를 그대로 옮겨 보겠습니다.
+      </p>
+
+      <div class="analogy">
+        <p class="analogy__title">
+          <span class="print-label">[비유] </span>🔧 이렇게 생각해 보세요
+        </p>
+        <div class="analogy__body">
+          <p>
+            v0 결과물을 그대로 기존 프로젝트 위에 덮어쓰는 건, 새로 산 가구를 조립 설명서도
+            안 보고 원래 있던 방에 억지로 밀어 넣는 것과 같아요. 자리를 맞추려면 결국 기존
+            방 구조(프로젝트 설정)를 아는 사람이 다시 배치를 해줘야 해요.
+          </p>
+        </div>
+      </div>
+
+      <div class="ai-prompt">
+        <p class="ai-prompt__title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l2.2 5.8L20 11l-5.8 2.2L12 19l-2.2-5.8L4 11l5.8-2.2z"/></svg>
+          <span class="print-label">[AI에게] </span>AI에게 이렇게 시켜보세요
+        </p>
+        <div class="ai-prompt__text">우리 서비스의 주 사용자 타겟은 내일 날씨, 이번주 날씨, 기온별 옷차림을 검색하는 유저들이고, 유저에게 트렌디함/편함/자주 들어오고싶은 인상을 주고 싶어. 홈페이지('/')에 사용할 컴포넌트를 만들어줘. 아래 정보가 포함되어야 해.
+- 오늘의 날씨 정보 (위치: 맨 왼쪽부터, 화면의 약 65%~70% 차지)
+- 활동지수(Activity Score): 80점 이상 실외활동하기 좋은 날씨(적절한 문구 필요), 80점 미만 실내활동하기 좋은 날씨(적절한 문구 필요) — 위치: 오늘의 날씨 정보 오른쪽 영역 상단
+- 졸라맨 캐릭터에 옷 입혀서 오늘의 기온/날씨에 따른 옷차림 추천 — asset으로 반팔티, 반바지, 바람막이, 후드티, 패딩, 코트 등을 만들어서 조합 가능하게 해줘 (위치: 활동지수 아래)</div>
+        <p class="ai-prompt__expect">
+          <strong>이런 답이 오면 정상</strong> — 왼쪽에 오늘의 날씨, 오른쪽 위에 활동지수,
+          그 아래 졸라맨 옷차림 추천이 배치된 홈페이지 컴포넌트가 나옵니다. <strong>첫
+          결과물은 초안일 뿐이므로, 마음에 들 때까지 이어서 수정 프롬프트를 계속 보내야</strong>
+          합니다.
+        </p>
+      </div>
+
+      <figure class="figure" id="fig-5-1">
+        <svg viewBox="0 0 660 260" role="img" aria-labelledby="f1t f1d">
+          <title id="f1t">v0 결과물이 Claude Code로 프로젝트에 옮겨지는 과정</title>
+          <desc id="f1d">v0에서 다듬은 화면 초안을 Download ZIP으로 내려받아 압축을 푼 뒤, Claude Code에게 기존 프로젝트 구조는 유지한 채 디자인만 옮겨 달라고 요청하는 흐름을 보여준다.</desc>
+          <rect x="20" y="90" width="170" height="72" rx="10"
+                fill="var(--fig-surface)" stroke="var(--fig-line)" stroke-width="1.8"/>
+          <text x="105" y="122" text-anchor="middle" font-size="13"
+                fill="var(--fig-text)" font-weight="700">v0</text>
+          <text x="105" y="140" text-anchor="middle" font-size="12"
+                fill="var(--fig-text-soft)">(화면 초안 다듬기)</text>
+
+          <path d="M198 126h56" stroke="var(--fig-line)" stroke-width="1.8" marker-end="url(#arrow5)"/>
+          <text x="226" y="112" text-anchor="middle" font-size="12" fill="var(--fig-accent)">Download ZIP</text>
+
+          <rect x="262" y="90" width="170" height="72" rx="10"
+                fill="var(--fig-surface)" stroke="var(--fig-line)" stroke-width="1.8"/>
+          <text x="347" y="122" text-anchor="middle" font-size="13"
+                fill="var(--fig-text)" font-weight="700">압축 해제</text>
+          <text x="347" y="140" text-anchor="middle" font-size="12"
+                fill="var(--fig-text-soft)">(기존 프로젝트 옆)</text>
+
+          <path d="M440 126h56" stroke="var(--fig-line)" stroke-width="1.8" marker-end="url(#arrow5)"/>
+          <text x="468" y="112" text-anchor="middle" font-size="12" fill="var(--fig-accent)">이식 요청</text>
+
+          <rect x="504" y="90" width="150" height="72" rx="10"
+                fill="var(--fig-surface)" stroke="var(--fig-line)" stroke-width="1.8"/>
+          <text x="579" y="122" text-anchor="middle" font-size="13"
+                fill="var(--fig-text)" font-weight="700">Claude Code</text>
+          <text x="579" y="140" text-anchor="middle" font-size="12"
+                fill="var(--fig-text-soft)">(구조 유지 + 디자인만)</text>
+
+          <text x="20" y="210" font-size="12" fill="var(--fig-text-soft)">
+            package.json 같은 설정은 그대로 두고, 디자인만 옮겨 달라고 요청하는 것이 핵심이다.
+          </text>
+
+          <defs>
+            <marker id="arrow5" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+              <path d="M0 0l8 4-8 4z" fill="var(--fig-line)"/>
+            </marker>
+          </defs>
+        </svg>
+        <figcaption class="figure__caption">
+          <strong>그림 5-1</strong> · v0에서 다듬은 결과물을 다운로드해 Claude Code로 프로젝트에 옮기는 흐름
+        </figcaption>
+      </figure>
+
+      <p>다 다듬었다면 아래 순서로 기존 프로젝트에 옮깁니다.</p>
+
+      <ol>
+        <li>v0 화면 오른쪽 위의 "Download ZIP" 버튼을 눌러 완성본을 내려받습니다.</li>
+        <li>압축을 풀고, 3장에서 만든 기존 프로젝트(skeleton) 폴더 옆에 둡니다.</li>
+        <li>Claude Code에게 기존 프로젝트 구조를 보존하면서 이 디자인만 옮겨 달라고 요청합니다.</li>
+        <li>새로 만드는 컴포넌트나 디자인은 기존 화면과 이질감이 없도록 만들어 달라고 함께 요청합니다.</li>
+      </ol>
+
+      <div class="ai-trap">
+        <p class="ai-trap__title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M15 9l-6 6M9 9l6 6"/></svg>
+          <span class="print-label">[AI 함정] </span>AI가 여기서 틀립니다
+        </p>
+        <p class="ai-trap__why">
+          v0가 만들어 준 프로젝트를 압축 해제해 기존 skeleton 프로젝트 폴더 위에 그대로
+          복사하면, <strong>서로 다른 package.json이나 설정 파일이 충돌</strong>합니다.
+          파일 이름이 같아 보여도 내부 의존성 목록이 달라, 그대로 덮어쓰면 npm install이
+          깨지기 쉽습니다.
+        </p>
+        <div class="ai-trap__grid">
+          <div class="ai-trap__wrong">
+            <span class="ai-trap__label"><span class="print-label">[X] </span>이렇게 옮기면 위험</span>
+            <div class="example__code" data-lang="text">
+<pre># v0 압축을 그대로 풀어서 덮어쓰기
+skeleton/package.json        ← v0의 package.json으로 통째로 교체됨
+skeleton/tailwind.config.*   ← v0 설정으로 통째로 교체됨</pre>
+            </div>
+            <div class="example__output">
+              <span class="example__output-label">문제</span>
+<pre>· 기존 프로젝트에 맞춰 둔 배포 설정(4장의 Cloudflare 연동 등)이 사라짐
+· npm install 시 의존성 충돌로 에러 발생</pre>
+            </div>
+          </div>
+          <div class="ai-trap__right">
+            <span class="ai-trap__label"><span class="print-label">[O] </span>Claude Code에게 이렇게 요청</span>
+            <div class="example__code" data-lang="text">
+<pre>v0 폴더의 디자인(컴포넌트, 스타일)만 우리 프로젝트로
+옮겨줘. package.json이나 배포 설정 같은
+기존 파일 구조는 그대로 유지해줘.</pre>
+            </div>
+          </div>
+        </div>
+        <p class="ai-trap__caught">
+          <strong>이걸 잡아낸 개념</strong> — 5.1절에서 강조한 "설계도는 v0, 조립은
+          Claude Code"라는 역할 구분입니다. v0는 화면 디자인의 출발점일 뿐, 프로젝트 설정까지
+          통째로 가져올 대상은 아닙니다.
+        </p>
+      </div>
+
+    </section>
+
+    <!-- ============================================================ -->
+    <section class="section chapter-outro">
+
+      <div class="summary">
+        <p class="summary__title">이 장에서 배운 것</p>
+        <ul>
+          <li>v0에게 프롬프트로 홈페이지 화면 초안을 그리게 했다.</li>
+          <li>v0 결과물을 충분히 다듬은 뒤 Download ZIP으로 내려받았다.</li>
+          <li>Claude Code에게 기존 프로젝트 구조를 지키면서 디자인만 이식해 달라고 요청했다.</li>
+        </ul>
+        <p class="summary__oneline">설계도는 v0에서 먼저 그리고, 조립과 이식은 Claude Code에게 맡기는 것이 지름길입니다.</p>
+      </div>
+
+      <div class="quiz">
+        <h3 class="quiz__title">연습문제</h3>
+
+        <div class="quiz__item">
+          <p class="quiz__q">
+            <span>1.</span>
+            <span>바로 Claude Code에게 "이런 사이트 만들어줘"라고 시키지 않고 v0를 먼저 쓰는 이유는 무엇인가요?</span>
+            <span class="quiz__level quiz__level--easy">쉬움</span>
+          </p>
+          <details class="quiz__answer">
+            <summary>정답 보기</summary>
+            <div class="quiz__answer-body">
+              <p>
+                AI 빌더인 v0로 화면 구조를 먼저 잡는 편이 바로 Claude Code에 맡기는 것보다
+                <strong>훨씬 효율적이기 때문</strong>입니다. 설계도 없이 집을 짓지 않는 것과
+                같은 이치입니다.
+              </p>
+            </div>
+          </details>
+        </div>
+
+        <div class="quiz__item">
+          <p class="quiz__q">
+            <span>2.</span>
+            <span>v0의 첫 결과물을 받자마자 바로 Claude Code로 넘기면 안 되는 이유는 무엇인가요?</span>
+            <span class="quiz__level quiz__level--normal">보통</span>
+          </p>
+          <details class="quiz__answer">
+            <summary>정답 보기</summary>
+            <div class="quiz__answer-body">
+              <p>
+                v0의 첫 결과물은 완성본이 아니라 출발점이기 때문입니다. 충분히 다듬지 않고
+                넘기면 <strong>Claude Code에서 다시 프롬프팅해야 할 일이 훨씬
+                많아집니다</strong>.
+              </p>
+            </div>
+          </details>
+        </div>
+
+        <div class="quiz__item">
+          <p class="quiz__q">
+            <span>3.</span>
+            <span>v0에서 받은 압축 파일을 기존 skeleton 프로젝트 위에 그대로 풀어서 덮어쓰면 어떤 문제가 생기고, 어떻게 피해야 하나요?</span>
+            <span class="quiz__level quiz__level--hard">어려움</span>
+          </p>
+          <details class="quiz__answer">
+            <summary>정답 보기</summary>
+            <div class="quiz__answer-body">
+              <p>
+                package.json이나 배포 설정 같은 파일이 v0의 것으로 통째로 바뀌어, 4장에서
+                맞춰 둔 Cloudflare 배포 설정이 깨지거나 npm install이 실패할 수 있습니다.
+                <strong>Claude Code에게 기존 프로젝트 구조는 유지한 채 디자인만 옮겨 달라고
+                요청</strong>해야 합니다.
+              </p>
+            </div>
+          </details>
+        </div>
+
+      </div>
+
+      <div class="next-preview">
+        <p class="next-preview__label">다음 장</p>
+        <p class="next-preview__title">6장 — 서버리스로 외부 API 연결하기</p>
+        <p>
+          화면 껍데기는 완성됐지만 아직 진짜 날씨 데이터는 없습니다. 다음 장에서는 Supabase
+          Edge Function으로 WeatherAPI.com의 실시간 날씨 데이터를 가져와 이 화면에 실제로
+          채워 넣습니다.
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <aside class="rail" aria-label="이 장의 주요 상자">
+    <p class="rail__title">이 장의 상자</p>
+    <ul class="rail__list">
+      <li><a href="#s5-1"><span class="rail__tag">핵심</span>TODO</a></li>
+    </ul>
+  </aside>
+
+</div>
+
+<!-- BUILD:PAGER:START -->
+  <nav class="pager" aria-label="페이지 이동">
+  <a class="pager__prev" href="ch04.html">
+    <p class="pager__dir">← 이전</p>
+    <p class="pager__name">4장 · Node.js와 Cloudflare로 배포 준비 끝내기</p>
+  </a>
+  <a class="pager__next" href="ch06.html">
+    <p class="pager__dir">다음 →</p>
+    <p class="pager__name">6장 · 서버리스로 외부 API 연결하기</p>
+  </a>
+</nav>
+  <!-- BUILD:PAGER:END -->
+
+<footer class="book-footer">
+  <p>AI로 웹사이트 만들고 애드센스로 돈 벌기</p>
+</footer>
+
+<div class="search-overlay" id="search-overlay" role="dialog" aria-modal="true" aria-label="검색">
+  <div class="search-panel">
+    <input type="search" placeholder="검색…" aria-label="검색어">
+    <div class="search-results"></div>
+  </div>
+</div>
+
+<!-- BUILD:SEARCH -->
+<script src="../assets/search-index.js"></script>
+<script src="../assets/book.js"></script>
+</body>
+</html>
